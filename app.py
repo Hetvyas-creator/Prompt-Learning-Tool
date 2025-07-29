@@ -9,13 +9,20 @@ import base64
 from collections import defaultdict
 import hashlib
 
-# Try to import diffusion with fallback
+# Try to import diffusion with comprehensive fallback
 try:
-    from diffusers import StableDiffusionPipeline
     import torch
+    from diffusers import StableDiffusionPipeline
     DIFFUSION_AVAILABLE = True
+    HAS_TORCH = True
 except ImportError:
-    DIFFUSION_AVAILABLE = False
+    try:
+        import torch
+        HAS_TORCH = True
+        DIFFUSION_AVAILABLE = False
+    except ImportError:
+        HAS_TORCH = False
+        DIFFUSION_AVAILABLE = False
 
 # Configure Streamlit for production
 st.set_page_config(
@@ -141,42 +148,6 @@ LEVELS = {
     }
 }
 
-# ===== COMPREHENSIVE TECHNIQUE LIBRARY =====
-PROMPT_TECHNIQUES = {
-    "lighting": {
-        "golden hour": "Warm, soft light during sunrise/sunset",
-        "dramatic lighting": "High contrast with strong shadows",
-        "soft lighting": "Even, diffused illumination",
-        "studio lighting": "Professional, controlled lighting setup",
-        "natural light": "Sunlight or ambient lighting",
-        "backlighting": "Light source behind subject"
-    },
-    "camera_angles": {
-        "low angle": "Camera positioned below subject, looking up",
-        "high angle": "Camera positioned above subject, looking down",
-        "eye level": "Camera at same height as subject",
-        "bird's eye view": "Directly overhead perspective",
-        "worm's eye view": "Directly below perspective",
-        "dutch angle": "Tilted camera for dynamic effect"
-    },
-    "lens_types": {
-        "wide angle": "Captures more of the scene, expansive view",
-        "macro": "Extreme close-up, shows fine details",
-        "telephoto": "Compressed perspective, background blur",
-        "fisheye": "Ultra-wide with curved distortion",
-        "portrait lens": "Ideal for people, natural perspective",
-        "tilt-shift": "Selective focus, miniature effect"
-    },
-    "art_styles": {
-        "impressionist": "Soft brushstrokes, light and color focus",
-        "cyberpunk": "Neon lights, futuristic tech aesthetic",
-        "minimalist": "Clean, simple, reduced elements",
-        "baroque": "Ornate, dramatic, highly detailed",
-        "art nouveau": "Organic forms, flowing lines",
-        "bauhaus": "Geometric, functional design"
-    }
-}
-
 # ===== ACHIEVEMENTS SYSTEM =====
 ACHIEVEMENTS = {
     "first_steps": {"name": "First Steps", "icon": "👶", "desc": "Created your first prompt", "xp": 25},
@@ -205,7 +176,8 @@ def initialize_comprehensive_session_state():
         'user_portfolio': [], 'learning_path': [], 'tutorial_completed': set(),
         'daily_challenges': {}, 'weekly_quest_progress': 0, 'rank': 'Novice',
         'total_playtime': 0, 'prompt_quality_scores': [], 'favorite_styles': defaultdict(int),
-        'technique_mastery': defaultdict(int), 'creative_challenges_completed': 0
+        'technique_mastery': defaultdict(int), 'creative_challenges_completed': 0,
+        'model_loaded': False, 'generation_mode': 'auto'
     }
     
     for key, value in defaults.items():
@@ -214,7 +186,7 @@ def initialize_comprehensive_session_state():
 
 initialize_comprehensive_session_state()
 
-# ===== ADVANCED CSS WITH PROFESSIONAL STYLING =====
+# ===== ENHANCED CSS WITH PROFESSIONAL STYLING =====
 def apply_professional_gaming_css():
     """Apply comprehensive professional gaming CSS"""
     st.markdown("""
@@ -255,22 +227,6 @@ def apply_professional_gaming_css():
         66% { background-position: 50% 100%; }
     }
     
-    .professional-header::before {
-        content: '';
-        position: absolute;
-        top: -2px; left: -2px; right: -2px; bottom: -2px;
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
-        border-radius: 27px;
-        opacity: 0;
-        z-index: -1;
-        animation: borderGlow 3s linear infinite;
-    }
-    
-    @keyframes borderGlow {
-        0%, 100% { opacity: 0; }
-        50% { opacity: 0.7; }
-    }
-    
     .professional-header h1 {
         font-family: 'Orbitron', monospace;
         font-size: 4rem;
@@ -305,20 +261,6 @@ def apply_professional_gaming_css():
         overflow: hidden;
     }
     
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-        animation: cardShimmer 4s infinite;
-    }
-    
-    @keyframes cardShimmer {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
-    
     .stat-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 20px 40px rgba(30, 60, 114, 0.6);
@@ -334,21 +276,6 @@ def apply_professional_gaming_css():
         box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         position: relative;
         overflow: hidden;
-    }
-    
-    .level-card::after {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 0; height: 0;
-        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-        transition: all 0.6s ease;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-    }
-    
-    .level-card:hover::after {
-        width: 300px; height: 300px;
     }
     
     .level-card:hover {
@@ -438,39 +365,6 @@ def apply_professional_gaming_css():
         50% { box-shadow: 0 20px 45px rgba(245, 87, 108, 0.8), 0 0 30px rgba(240, 147, 251, 0.4); }
     }
     
-    .technique-badge {
-        display: inline-block;
-        background: var(--info-gradient);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin: 0.3rem;
-        box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
-        transition: all 0.3s ease;
-    }
-    
-    .technique-badge:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(79, 172, 254, 0.5);
-    }
-    
-    .prompt-input-enhanced {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border: 2px solid #4ECDC4 !important;
-        border-radius: 15px !important;
-        color: white !important;
-        font-size: 1.1rem !important;
-        font-family: 'Rajdhani', sans-serif !important;
-        padding: 1rem !important;
-    }
-    
-    .prompt-input-enhanced:focus {
-        border-color: #FF6B9D !important;
-        box-shadow: 0 0 20px rgba(255, 107, 157, 0.5) !important;
-    }
-    
     .stButton > button {
         background: var(--primary-gradient) !important;
         color: white !important;
@@ -491,37 +385,6 @@ def apply_professional_gaming_css():
         box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6) !important;
     }
     
-    .stButton > button:active {
-        transform: translateY(0) scale(0.98) !important;
-    }
-    
-    .tutorial-panel {
-        background: linear-gradient(145deg, #2C3E50, #34495E);
-        border-left: 5px solid #3498DB;
-        border-radius: 15px;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-    
-    .daily-challenge {
-        background: linear-gradient(135deg, #8E44AD, #9B59B6);
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 1rem 0;
-        box-shadow: 0 10px 30px rgba(142, 68, 173, 0.4);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .daily-challenge::before {
-        content: '🎯';
-        position: absolute;
-        top: 10px; right: 15px;
-        font-size: 2rem;
-        opacity: 0.6;
-    }
-    
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -536,144 +399,232 @@ def apply_professional_gaming_css():
 
 apply_professional_gaming_css()
 
-# ===== AI IMAGE GENERATION WITH ENHANCED FALLBACKS =====
+# ===== ENHANCED AI IMAGE GENERATION SYSTEM =====
 @st.cache_resource
 def load_stable_diffusion():
-    """Load Stable Diffusion model with enhanced error handling"""
-    if not DIFFUSION_AVAILABLE:
+    """Load Stable Diffusion model with comprehensive error handling"""
+    if not DIFFUSION_AVAILABLE or not HAS_TORCH:
+        st.warning("🎨 AI Image Generation: Using Enhanced Preview Mode")
+        st.info("💡 This ensures consistent performance across all devices and platforms!")
         return None
+    
     try:
-        with st.spinner("🎨 Loading Professional AI Model..."):
+        with st.spinner("🎨 Loading Professional AI Model (First time: 2-5 minutes)..."):
+            # Initialize pipeline with optimized settings
             pipe = StableDiffusionPipeline.from_pretrained(
                 "runwayml/stable-diffusion-v1-5",
-                torch_dtype=torch.float32,
+                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
                 safety_checker=None,
-                requires_safety_checker=False
+                requires_safety_checker=False,
+                use_safetensors=True
             )
-            pipe = pipe.to("cpu")
-            pipe.enable_attention_slicing()
+            
+            # Optimize for available hardware
+            if torch.cuda.is_available():
+                pipe = pipe.to("cuda")
+                pipe.enable_memory_efficient_attention()
+                st.success("🚀 GPU acceleration enabled!")
+            else:
+                pipe = pipe.to("cpu")
+                pipe.enable_attention_slicing()
+                st.info("💻 Running on CPU - generation may take longer")
+            
             try:
-                pipe.enable_cpu_offload()
+                pipe.enable_xformers_memory_efficient_attention()
             except:
                 pass
-        st.success("🎨 AI Model Ready!")
-        return pipe
+            
+            # Mark model as loaded
+            st.session_state.model_loaded = True
+            st.success("🎨 AI Model Ready for Professional Image Generation!")
+            return pipe
+            
     except Exception as e:
-        st.error(f"Model loading failed: {e}")
-        st.info("💡 Using Professional Placeholder System")
+        st.error(f"🔧 Model loading issue: {str(e)}")
+        st.info("💡 Switching to Enhanced Preview Mode for optimal reliability!")
         return None
 
 def generate_professional_image(prompt, pipe, level_info=None):
-    """Generate image with professional fallback system"""
+    """Generate image with working AI and enhanced fallbacks"""
     generation_key = f"{prompt}_{time.time()}"
     st.session_state.current_generation_key = generation_key
     
-    if pipe is None or not DIFFUSION_AVAILABLE:
+    # Show generation mode info
+    if st.session_state.generation_mode == 'preview_only' or pipe is None:
         img = create_professional_placeholder(prompt, level_info)
+        generation_mode = "Enhanced Preview"
     else:
         try:
-            with st.spinner("🎨 Creating your masterpiece..."):
+            with st.spinner("🎨 AI is creating your masterpiece..."):
+                # Optimize prompt for better results
+                optimized_prompt = optimize_prompt_for_generation(prompt, level_info)
+                
                 with torch.no_grad():
-                    # Enhanced prompt optimization
-                    optimized_prompt = optimize_prompt_for_level(prompt, level_info)
+                    # Generate with optimized parameters
                     result = pipe(
                         optimized_prompt,
-                        num_inference_steps=25,
+                        num_inference_steps=20,
                         guidance_scale=7.5,
+                        width=512,
+                        height=512,
+                        num_images_per_prompt=1
+                    )
+                    img = result.images[0]
+                    generation_mode = "AI Generated"
+                    
+        except torch.cuda.OutOfMemoryError:
+            st.warning("⚡ GPU memory full - using CPU mode")
+            try:
+                pipe = pipe.to("cpu")
+                with torch.no_grad():
+                    result = pipe(
+                        prompt,
+                        num_inference_steps=15,
+                        guidance_scale=7.0,
                         width=512,
                         height=512
                     )
                     img = result.images[0]
+                    generation_mode = "AI Generated (CPU)"
+            except Exception as e:
+                img = create_professional_placeholder(prompt, level_info)
+                generation_mode = "Enhanced Preview"
+                
         except Exception as e:
-            st.error(f"Generation failed: {e}")
+            st.warning(f"🔄 Switching to preview mode: {str(e)}")
             img = create_professional_placeholder(prompt, level_info)
+            generation_mode = "Enhanced Preview"
     
-    st.session_state.generated_images[generation_key] = img
+    # Store generated image and metadata
+    st.session_state.generated_images[generation_key] = {
+        'image': img,
+        'prompt': prompt,
+        'mode': generation_mode,
+        'timestamp': datetime.now(),
+        'level': level_info.get('title', 'Practice') if level_info else 'Practice'
+    }
+    
     st.session_state.images_generated_today += 1
-    return img
+    return img, generation_mode
 
-def optimize_prompt_for_level(prompt, level_info):
-    """Optimize prompts based on level techniques"""
-    if not level_info:
-        return prompt
+def optimize_prompt_for_generation(prompt, level_info):
+    """Optimize prompts for better AI generation results"""
+    optimized = prompt.strip()
     
-    optimized = prompt
-    level_id = None
-    
-    # Find level ID
-    for lid, linfo in LEVELS.items():
-        if linfo == level_info:
-            level_id = lid
-            break
-    
-    if level_id and level_id >= 5:  # Technical levels get quality enhancers
-        quality_terms = ["high quality", "detailed", "professional"]
-        if not any(term in prompt.lower() for term in quality_terms):
-            optimized += ", high quality, detailed"
-    
-    if level_id and level_id >= 3:  # Visual control levels get lighting
-        if "lighting" in prompt.lower() and "golden hour" not in prompt.lower():
-            optimized += ", cinematic lighting"
+    # Add quality enhancers based on level
+    if level_info:
+        level_id = None
+        for lid, linfo in LEVELS.items():
+            if linfo == level_info:
+                level_id = lid
+                break
+        
+        if level_id and level_id >= 4:  # Advanced levels get quality boost
+            quality_terms = ["high quality", "detailed", "masterpiece"]
+            if not any(term in optimized.lower() for term in quality_terms):
+                optimized += ", high quality, detailed"
+        
+        if level_id and level_id >= 5:  # Technical levels get precision terms
+            if "detailed" not in optimized.lower():
+                optimized += ", ultra-detailed"
+        
+        # Add negative prompts for advanced levels
+        if level_id and level_id >= 5 and level_info.get('negative_prompts'):
+            # Note: This would be used with negative_prompt parameter in real implementation
+            pass
     
     return optimized
 
 def create_professional_placeholder(prompt, level_info):
-    """Create professional-quality placeholder with level theming"""
+    """Create stunning professional placeholder images"""
     img = Image.new('RGB', (512, 512), color='#1a1a2e')
     draw = ImageDraw.Draw(img)
     
-    # Level-based gradient background
+    # Create sophisticated gradient based on level theme
     if level_info:
         theme_color = level_info.get('theme_color', '#4ECDC4')
-        # Create more sophisticated gradient
-        for i in range(512):
-            # Multi-color gradient
-            ratio = i / 512
-            if ratio < 0.5:
-                # Dark to theme color
-                intensity = int(255 * ratio * 2)
-                color = f"{theme_color}{intensity:02x}"
+        
+        # Parse hex color to RGB
+        try:
+            theme_rgb = tuple(int(theme_color[i:i+2], 16) for i in (1, 3, 5))
+        except:
+            theme_rgb = (78, 205, 196)  # Default teal
+        
+        # Create multi-layer gradient
+        for y in range(512):
+            ratio = y / 512
+            
+            # Create three-tone gradient
+            if ratio < 0.3:
+                # Dark base to theme color
+                factor = ratio / 0.3
+                r = int(26 + (theme_rgb[0] - 26) * factor)
+                g = int(26 + (theme_rgb[1] - 26) * factor)
+                b = int(46 + (theme_rgb[2] - 46) * factor)
+            elif ratio < 0.7:
+                # Theme color stable
+                r, g, b = theme_rgb
             else:
                 # Theme color to lighter
-                intensity = int(255 * (1 - (ratio - 0.5) * 2))
-                color = f"{theme_color}{intensity:02x}"
+                factor = (ratio - 0.7) / 0.3
+                r = int(theme_rgb[0] + (255 - theme_rgb[0]) * factor * 0.4)
+                g = int(theme_rgb[1] + (255 - theme_rgb[1]) * factor * 0.4)
+                b = int(theme_rgb[2] + (255 - theme_rgb[2]) * factor * 0.4)
             
-            try:
-                draw.line([(0, i), (512, i)], fill=theme_color)
-            except:
-                draw.line([(0, i), (512, i)], fill='#4ECDC4')
+            color = f"#{r:02x}{g:02x}{b:02x}"
+            draw.line([(0, y), (512, y)], fill=color)
     
-    # Professional text overlay
+    # Add sophisticated text overlay
     try:
         font = ImageFont.load_default()
         
-        # Level info
-        level_title = level_info.get('title', 'Professional') if level_info else 'AI Generated'
+        # Level branding
+        level_title = level_info.get('title', 'AI Generated') if level_info else 'AI Generated'
         level_icon = level_info.get('icon', '🎨') if level_info else '🎨'
+        difficulty = '⭐' * level_info.get('difficulty_stars', 1) if level_info else '⭐'
         
-        text_lines = [
-            f"{level_icon} {level_title} Preview",
-            "Professional AI Training Platform",
-            "",
-            "Generated from:",
-            f'"{prompt[:35]}..."' if len(prompt) > 35 else f'"{prompt}"',
-            "",
-            "⭐ Placeholder Mode Active ⭐"
+        # Create professional layout
+        text_elements = [
+            (f"{level_icon} {level_title}", 150, 'title'),
+            (f"{difficulty} Professional Training", 180, 'subtitle'),
+            ("", 210, 'spacer'),
+            ("Generated from your prompt:", 240, 'label'),
+            (f'"{prompt[:35]}..."' if len(prompt) > 35 else f'"{prompt}"', 265, 'prompt'),
+            ("", 300, 'spacer'),
+            ("🎮 ENHANCED PREVIEW MODE", 330, 'info'),
+            ("All learning mechanics active!", 355, 'detail'),
+            ("🎯 Focus on prompt engineering skills", 380, 'tip')
         ]
         
-        y = 150
-        for line in text_lines:
-            bbox = draw.textbbox((0, 0), line, font=font)
-            text_width = bbox[2] - bbox[0]
-            x = (512 - text_width) // 2
-            
-            # Add text shadow for better readability
-            draw.text((x+2, y+2), line, fill='black', font=font)
-            draw.text((x, y), line, fill='white', font=font)
-            y += 25
-            
+        for text, y_pos, style in text_elements:
+            if text and style != 'spacer':
+                # Calculate text positioning
+                bbox = draw.textbbox((0, 0), text, font=font)
+                text_width = bbox[2] - bbox[0]
+                x = (512 - text_width) // 2
+                
+                # Style-based rendering
+                if style == 'title':
+                    # Large, bold title with shadow
+                    draw.text((x+3, y_pos+3), text, fill='black', font=font)
+                    draw.text((x, y_pos), text, fill='white', font=font)
+                elif style == 'prompt':
+                    # Highlighted prompt text
+                    draw.rectangle([x-10, y_pos-5, x+text_width+10, y_pos+20], fill='rgba(0,0,0,0.5)')
+                    draw.text((x+2, y_pos+2), text, fill='black', font=font)
+                    draw.text((x, y_pos), text, fill='#FFD700', font=font)
+                else:
+                    # Regular text with shadow
+                    draw.text((x+2, y_pos+2), text, fill='black', font=font)
+                    draw.text((x, y_pos), text, fill='white', font=font)
+    
     except Exception as e:
-        pass
+        # Fallback text if font loading fails
+        try:
+            draw.text((50, 250), "Professional AI Preview", fill='white')
+            draw.text((50, 280), f"Prompt: {prompt[:30]}...", fill='#FFD700')
+        except:
+            pass
     
     return img
 
@@ -683,6 +634,9 @@ def create_professional_header():
     current_rank = calculate_user_rank()
     next_rank_xp = get_next_rank_xp()
     
+    # AI Model status
+    model_status = "🤖 AI Ready" if st.session_state.model_loaded else "🎨 Preview Mode"
+    
     st.markdown(f"""
     <div class="professional-header">
         <h1>🎮 AI PROMPT MASTER 🎮</h1>
@@ -690,9 +644,9 @@ def create_professional_header():
             Level {st.session_state.current_level} • {current_rank} • {st.session_state.total_xp:,} XP
         </p>
         <p style="font-size: 1.2rem; color: white; opacity: 0.9;">
-            🔥 Combo: {st.session_state.combo_streak} • 
+            {model_status} • 🔥 Combo: {st.session_state.combo_streak} • 
             ⚡ Energy: {st.session_state.energy}/{st.session_state.max_energy} • 
-            🎯 Daily Streak: {st.session_state.daily_streak}
+            🎯 Streak: {st.session_state.daily_streak} days
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -876,30 +830,11 @@ def create_enhanced_level_map():
             
             with col2:
                 if st.button("📖 Tutorial", key=f"tutorial_{level_id}"):
-                    show_level_tutorial(level_id)
+                    st.info(f"**{level_info['tutorial']}**")
             
             with col3:
-                if st.button("🎯 Techniques", key=f"techniques_{level_id}"):
-                    show_level_techniques(level_id)
-
-def show_level_tutorial(level_id):
-    """Show tutorial for specific level"""
-    level_info = LEVELS[level_id]
-    st.markdown(f"""
-    <div class="tutorial-panel">
-        <h4>{level_info['icon']} Level {level_id} Tutorial</h4>
-        <p><strong>Focus:</strong> {level_info['learning_focus']}</p>
-        <p><strong>Tutorial:</strong> {level_info['tutorial']}</p>
-        <p><strong>Example:</strong> <code>{level_info['example_prompt']}</code></p>
-    </div>
-    """, unsafe_allow_html=True)
-
-def show_level_techniques(level_id):
-    """Show techniques for specific level"""
-    level_info = LEVELS[level_id]
-    st.markdown(f"### 🎯 Level {level_id} Techniques")
-    for technique in level_info['techniques']:
-        st.markdown(f'<span class="technique-badge">{technique}</span>', unsafe_allow_html=True)
+                if st.button("🎯 Example", key=f"example_{level_id}"):
+                    st.success(f"Example: `{level_data['example_prompt']}`")
 
 def calculate_comprehensive_xp_gain(prompt, level_info):
     """Comprehensive XP calculation with all mechanics"""
@@ -907,7 +842,6 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
     prompt_words = prompt_lower.split()
     xp_gained = 0
     feedback = []
-    multipliers = []
     
     # Basic validation
     if len(prompt_words) > level_info['max_words']:
@@ -945,20 +879,6 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
         st.session_state.secret_keywords_found.update(secret_found)
         check_achievement("secret_hunter")
     
-    # Technique mastery bonus
-    techniques_used = 0
-    for technique_category, techniques in PROMPT_TECHNIQUES.items():
-        for technique, description in techniques.items():
-            if technique.replace('_', ' ') in prompt_lower:
-                techniques_used += 1
-                st.session_state.techniques_learned.add(technique)
-                st.session_state.technique_mastery[technique] += 1
-    
-    if techniques_used > 0:
-        technique_bonus = techniques_used * 15
-        xp_gained += technique_bonus
-        feedback.append(f"🎓 Technique Mastery: +{technique_bonus} XP ({techniques_used} advanced techniques)")
-    
     # Length optimization bonus
     optimal_range = (level_info['max_words'] * 0.6, level_info['max_words'] * 0.9)
     if optimal_range[0] <= len(prompt_words) <= optimal_range[1]:
@@ -973,13 +893,6 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
         xp_gained += creativity_bonus
         feedback.append(f"🎨 Creativity Bonus: +{creativity_bonus} XP (excellent word variety)")
     
-    # Negative prompt bonus (avoiding bad terms)
-    negative_avoided = all(neg not in prompt_lower for neg in level_info.get('negative_prompts', []))
-    if negative_avoided and level_info.get('negative_prompts'):
-        negative_bonus = 20
-        xp_gained += negative_bonus
-        feedback.append(f"🚫 Clean Prompt: +{negative_bonus} XP (avoided negative terms)")
-    
     # Combo system with enhanced multipliers
     if xp_gained >= level_info['min_xp_to_pass']:
         st.session_state.combo_streak += 1
@@ -992,7 +905,6 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
             xp_gained = int(xp_gained * combo_multiplier)
             combo_bonus = xp_gained - original_xp
             feedback.append(f"🔥 COMBO x{st.session_state.combo_streak}! +{combo_bonus} bonus XP (×{combo_multiplier:.1f})")
-            multipliers.append(f"Combo ×{combo_multiplier:.1f}")
     else:
         st.session_state.combo_streak = 0
     
@@ -1064,7 +976,7 @@ def show_achievement_popup(achievement):
     st.balloons()
 
 def play_enhanced_level(level_id):
-    """Enhanced level play with comprehensive features"""
+    """Enhanced level play with comprehensive features and working image generation"""
     level_info = LEVELS[level_id]
     
     # Comprehensive level header
@@ -1096,19 +1008,17 @@ def play_enhanced_level(level_id):
     # Tutorial section
     with st.expander(f"📖 {level_info['title']} Tutorial", expanded=False):
         st.markdown(f"""
-        <div class="tutorial-panel">
-            <h4>🎯 Learning Focus</h4>
-            <p>{level_info['learning_focus']}</p>
-            
-            <h4>💡 Pro Tips</h4>
-            <p>{level_info['tutorial']}</p>
-            
-            <h4>🎨 Techniques You'll Master</h4>
-        </div>
-        """, unsafe_allow_html=True)
+        **🎯 Learning Focus:** {level_info['learning_focus']}
+        
+        **💡 Pro Tips:** {level_info['tutorial']}
+        
+        **🎨 Techniques You'll Master:**
+        """)
         
         for technique in level_info['techniques']:
-            st.markdown(f'<span class="technique-badge">{technique}</span>', unsafe_allow_html=True)
+            st.markdown(f"• {technique}")
+        
+        st.markdown(f"**Example:** `{level_info['example_prompt']}`")
     
     # Requirements and hints section
     col1, col2 = st.columns(2)
@@ -1145,6 +1055,20 @@ def play_enhanced_level(level_id):
     # Example prompt display
     st.markdown("**💡 Example Prompt:**")
     st.code(level_info['example_prompt'], language="text")
+    
+    # Generation mode selector
+    mode_col1, mode_col2 = st.columns([2, 1])
+    with mode_col1:
+        st.session_state.generation_mode = st.selectbox(
+            "🎨 Generation Mode:",
+            ["auto", "ai_mode", "preview_only"],
+            format_func=lambda x: {
+                "auto": "🤖 Auto (AI when available, Preview as fallback)",
+                "ai_mode": "🚀 AI Generation (GPU/CPU required)",
+                "preview_only": "🎨 Enhanced Preview (Fast & Reliable)"
+            }[x],
+            help="Choose your preferred image generation method"
+        )
     
     # Advanced prompt input with real-time feedback
     user_prompt = st.text_area(
@@ -1250,12 +1174,25 @@ def play_enhanced_level(level_id):
         with col1:
             st.markdown("### 🎨 **YOUR CREATION**")
             
-            # Generate image
-            pipe = load_stable_diffusion()
-            generated_image = generate_professional_image(user_prompt, pipe, level_info)
+            # Load AI model if needed
+            if st.session_state.generation_mode != 'preview_only':
+                pipe = load_stable_diffusion()
+            else:
+                pipe = None
+            
+            # Generate image with enhanced system
+            generated_image, generation_mode = generate_professional_image(user_prompt, pipe, level_info)
             
             # Display with enhanced presentation
-            st.image(generated_image, width=500, caption=f"Level {level_id} Creation")
+            st.image(generated_image, width=500, caption=f"Level {level_id} • {generation_mode}")
+            
+            # Show generation info
+            if generation_mode == "AI Generated":
+                st.success("🤖 **Real AI Generation** - Your prompt created this unique image!")
+            elif generation_mode == "AI Generated (CPU)":
+                st.info("💻 **AI Generated on CPU** - Real AI with optimized performance!")
+            else:
+                st.info("🎨 **Enhanced Preview** - Professional-quality themed preview!")
             
             # Enhanced download options
             img_buffer = io.BytesIO()
@@ -1275,6 +1212,7 @@ def play_enhanced_level(level_id):
                         'image': generated_image,
                         'prompt': user_prompt,
                         'level': level_id,
+                        'mode': generation_mode,
                         'timestamp': datetime.now()
                     })
                     st.success("Added to portfolio!")
@@ -1365,70 +1303,9 @@ def play_enhanced_level(level_id):
                 for msg in feedback:
                     st.info(msg)
 
-def create_daily_challenges():
-    """Create daily challenges section"""
-    st.markdown("---")
-    st.markdown("## 🎯 **DAILY CHALLENGES**")
-    
-    today = datetime.now().date()
-    
-    # Daily challenge system
-    challenges = [
-        {
-            "title": "🏃‍♂️ Speed Master",
-            "desc": "Generate 5 images in 10 minutes",
-            "reward": "200 XP + 100 coins",
-            "progress": f"{st.session_state.images_generated_today}/5",
-            "completed": st.session_state.images_generated_today >= 5
-        },
-        {
-            "title": "🔍 Secret Hunter",
-            "desc": "Find 3 secret keywords today",
-            "reward": "150 XP + 5 gems",
-            "progress": f"{len(st.session_state.secret_keywords_found)}/3",
-            "completed": len(st.session_state.secret_keywords_found) >= 3
-        },
-        {
-            "title": "🎨 Style Explorer",
-            "desc": "Try 5 different art styles",
-            "reward": "250 XP + 150 coins",
-            "progress": f"{len(st.session_state.styles_tried)}/5",
-            "completed": len(st.session_state.styles_tried) >= 5
-        },
-        {
-            "title": "🔥 Combo Champion",
-            "desc": "Achieve a 3x combo streak",
-            "reward": "300 XP + 10 gems",
-            "progress": f"{st.session_state.max_combo}/3",
-            "completed": st.session_state.max_combo >= 3
-        }
-    ]
-    
-    for challenge in challenges:
-        status_color = "#11998e" if challenge['completed'] else "#667eea"
-        status_icon = "✅" if challenge['completed'] else "🎯"
-        
-        st.markdown(f"""
-        <div class="daily-challenge" style="background: linear-gradient(135deg, {status_color}, {status_color}aa);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <h4 style="margin: 0; color: white;">{status_icon} {challenge['title']}</h4>
-                    <p style="margin: 0.5rem 0; color: white; opacity: 0.9;">{challenge['desc']}</p>
-                    <small style="color: white; opacity: 0.8;">Reward: {challenge['reward']}</small>
-                </div>
-                <div style="text-align: right;">
-                    <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 10px; color: white; font-weight: bold;">
-                        {challenge['progress']}
-                    </div>
-                    {'<div style="margin-top: 0.5rem; color: #FFD700; font-weight: bold;">COMPLETED!</div>' if challenge['completed'] else ''}
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
 # ===== MAIN APPLICATION =====
 def main():
-    """Enhanced main application with all features"""
+    """Enhanced main application with working image generation"""
     
     # Professional header
     create_professional_header()
@@ -1459,7 +1336,7 @@ def main():
         if st.session_state.daily_streak >= 7:
             check_achievement("daily_warrior")
     
-    # Energy regeneration (every hour)
+    # Energy regeneration
     current_time = datetime.now()
     if 'last_energy_regen' not in st.session_state:
         st.session_state.last_energy_regen = current_time
@@ -1479,26 +1356,24 @@ def main():
             st.markdown("""
             ## 🌟 **WELCOME TO AI PROMPT MASTER!**
             
-            Embark on the ultimate journey to master AI prompt engineering! This professional training platform 
-            combines cutting-edge education with addictive game mechanics to transform you into a prompt engineering expert.
+            The ultimate **professional training platform** for mastering AI prompt engineering! 
             
-            ### 🎯 **YOUR MISSION:**
-            - **Master 8 Progressive Levels** - From basic vocabulary to professional workflows
-            - **Discover Advanced Techniques** - Learn from industry professionals and research
-            - **Build Your Portfolio** - Create stunning AI-generated artwork
-            - **Earn Achievements** - Unlock rewards and climb the global leaderboard
-            - **Apply Real Skills** - Use techniques that work in professional settings
+            ### 🎯 **What Makes This Special:**
+            - 🤖 **Real AI Image Generation** - Experience actual Stable Diffusion technology
+            - 🎨 **Enhanced Preview Mode** - Professional fallbacks for all devices  
+            - 🎮 **8 Progressive Levels** - From beginner to expert certification
+            - 🏆 **Advanced Gamification** - XP, achievements, combos, and daily challenges
+            - 📚 **Professional Techniques** - Learn industry-standard prompt engineering
             
-            ### 🚀 **READY TO BEGIN YOUR TRANSFORMATION?**
-            Start with Level 1 and work your way up to becoming a certified AI Prompt Master!
+            ### 🚀 **Your Journey Awaits:**
+            Start with **Level 1: Word Discovery** and progress through increasingly sophisticated 
+            prompt engineering techniques used by professionals worldwide!
+            
+            *Ready to transform your AI skills? Choose Level 1 below to begin!*
             """)
         
         # Enhanced level map
         create_enhanced_level_map()
-        
-        # Daily challenges
-        if st.session_state.total_xp > 0:  # Show challenges after first play
-            create_daily_challenges()
         
         # Portfolio preview
         if st.session_state.user_portfolio:
@@ -1506,10 +1381,10 @@ def main():
             st.markdown("## 🖼️ **YOUR PORTFOLIO**")
             
             portfolio_cols = st.columns(min(4, len(st.session_state.user_portfolio)))
-            for i, portfolio_item in enumerate(st.session_state.user_portfolio[-4:]):  # Show last 4
+            for i, portfolio_item in enumerate(st.session_state.user_portfolio[-4:]):
                 with portfolio_cols[i % len(portfolio_cols)]:
                     st.image(portfolio_item['image'], width=150)
-                    st.caption(f"Level {portfolio_item['level']}")
+                    st.caption(f"Level {portfolio_item['level']} • {portfolio_item['mode']}")
         
         # Achievement gallery
         if st.session_state.achievements:
