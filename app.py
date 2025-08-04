@@ -29,10 +29,10 @@ st.set_page_config(
     page_title="AI Prompt Master - Professional Training Platform",
     page_icon="🎮",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
-# ===== COMPREHENSIVE LEVEL SYSTEM =====
+# ===== COMPREHENSIVE LEVEL SYSTEM (8 LEVELS) =====
 LEVELS = {
     1: {
         "title": "Word Discovery", "icon": "🧙‍♂️", "theme_color": "#FF6B9D",
@@ -186,235 +186,166 @@ def initialize_comprehensive_session_state():
 
 initialize_comprehensive_session_state()
 
-# ===== ENHANCED CSS WITH ANIMATED BACKGROUND =====
-def apply_professional_gaming_css():
-    """Apply enhanced professional gaming CSS with animated background"""
+# ===== ENHANCED CSS WITH MODERN GLASSMORPHISM DESIGN =====
+def apply_modern_glassmorphism_css():
+    """Apply modern glassmorphism CSS with improved animations"""
     st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
     
-    /* ===== ANIMATED GRADIENT BACKGROUND ===== */
-    html, body, .main {
-        background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #fdbb2d, #1a2a6c, #8e44ad, #2c3e50);
-        background-size: 600% 600%;
-        animation: gradientBackground 20s ease infinite;
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --info-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --dark-bg: linear-gradient(135deg, #0C0C0C 0%, #1A1A2E 50%, #16213E 100%);
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+    }
+    
+    .main {
+        font-family: 'Rajdhani', sans-serif;
+        background: var(--dark-bg);
         color: #FFFFFF;
         min-height: 100vh;
-        font-family: 'Rajdhani', sans-serif;
     }
     
-    @keyframes gradientBackground {
-        0% { background-position: 0% 50%; }
-        25% { background-position: 100% 50%; }
-        50% { background-position: 100% 100%; }
-        75% { background-position: 0% 100%; }
-        100% { background-position: 0% 50%; }
+    /* Modern glassmorphism design */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
     }
     
-    /* Override Streamlit default styles */
-    .stApp {
-        background: transparent !important;
+    .glass-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     }
     
-    .block-container {
-        background: rgba(0, 0, 0, 0.4) !important;
-        backdrop-filter: blur(10px) !important;
-        border-radius: 25px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        padding: 2rem 3rem !important;
-        margin-top: 1rem !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-    }
-    
-    /* ===== FLOATING ANIMATIONS ===== */
-    .floating-icon {
-        animation: float 3s ease-in-out infinite;
-        display: inline-block;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-    }
-    
-    .pulse-glow {
-        animation: pulseGlow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes pulseGlow {
-        from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff; }
-        to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff; }
-    }
-    
-    /* ===== ENHANCED HEADER ===== */
-    .professional-header {
-        text-align: center;
-        padding: 3rem 2rem;
-        background: linear-gradient(135deg, rgba(255, 107, 157, 0.9), rgba(78, 205, 196, 0.9), rgba(69, 183, 209, 0.9));
-        backdrop-filter: blur(15px);
+    /* Enhanced header with better spacing */
+    .modern-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background-size: 300% 300%;
+        animation: gradientShift 8s ease infinite;
+        padding: 4rem 2rem;
         border-radius: 30px;
-        margin-bottom: 2rem;
-        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+        margin: 2rem 0;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
     }
     
-    .professional-header::before {
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        33% { background-position: 100% 50%; }
+        66% { background-position: 50% 100%; }
+    }
+    
+    .modern-header::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s linear infinite;
-        transform: rotate(45deg);
+        top: 0; left: 0;
+        right: 0; bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
     }
     
-    @keyframes shimmer {
-        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-    
-    .professional-header h1 {
+    .modern-header h1 {
         font-family: 'Orbitron', monospace;
         font-size: 4rem;
         font-weight: 900;
         margin: 0;
         color: white;
+        text-shadow: 3px 3px 15px rgba(0,0,0,0.7);
+        animation: titlePulse 3s ease-in-out infinite alternate;
         position: relative;
         z-index: 2;
     }
     
-    /* ===== INTERACTIVE BUTTONS ===== */
-    .stButton > button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
-        background-size: 200% 200% !important;
-        animation: buttonGradient 4s ease infinite !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 25px !important;
-        padding: 1rem 2rem !important;
-        font-weight: 700 !important;
-        font-size: 1.1rem !important;
-        font-family: 'Rajdhani', sans-serif !important;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
-        cursor: pointer !important;
-        position: relative !important;
-        overflow: hidden !important;
+    @keyframes titlePulse {
+        from { text-shadow: 3px 3px 15px rgba(0,0,0,0.7), 0 0 30px rgba(255,255,255,0.5); }
+        to { text-shadow: 3px 3px 25px rgba(0,0,0,0.9), 0 0 50px rgba(255,255,255,0.8); }
     }
     
-    @keyframes buttonGradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+    /* Enhanced stats grid with glassmorphism */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
     }
     
-    .stButton > button:hover {
-        transform: translateY(-5px) scale(1.05) !important;
-        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6) !important;
-        background: linear-gradient(135deg, #f093fb 0%, #667eea 50%, #764ba2 100%) !important;
-    }
-    
-    .stButton > button:active {
-        transform: translateY(-2px) scale(1.02) !important;
-    }
-    
-    /* ===== ENHANCED TEXT AREAS ===== */
-    .stTextArea > div > div > textarea {
-        background: rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(10px) !important;
-        border: 2px solid rgba(78, 205, 196, 0.6) !important;
-        border-radius: 20px !important;
-        color: #ffffff !important;
-        font-size: 1.2rem !important;
-        font-family: 'Rajdhani', sans-serif !important;
-        padding: 1.5rem !important;
-        transition: all 0.3s ease !important;
-        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-    }
-    
-    .stTextArea > div > div > textarea:focus {
-        border-color: #ff6b9d !important;
-        outline: none !important;
-        box-shadow: 0 0 20px rgba(255, 107, 157, 0.6) !important;
-        background: rgba(255, 255, 255, 0.15) !important;
-    }
-    
-    /* ===== ENHANCED STATS CARDS ===== */
     .stat-card {
-        background: linear-gradient(145deg, rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)) !important;
-        backdrop-filter: blur(15px) !important;
-        border-radius: 25px !important;
-        padding: 2rem !important;
-        text-align: center !important;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        position: relative !important;
-        overflow: hidden !important;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.15);
     }
     
     .stat-card::before {
         content: '';
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        transform: translateX(-100%);
-        transition: transform 0.6s;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
     }
     
     .stat-card:hover::before {
-        transform: translateX(100%);
+        left: 100%;
     }
     
-    .stat-card:hover {
-        transform: translateY(-10px) scale(1.05) !important;
-        box-shadow: 0 20px 40px rgba(30, 60, 114, 0.6) !important;
-        border-color: rgba(255, 107, 157, 0.5) !important;
+    /* Level cards with modern design */
+    .level-card-modern {
+        background: linear-gradient(145deg, rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8));
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 2.5rem;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
     
-    /* ===== ENHANCED LEVEL CARDS ===== */
-    .level-card {
-        background: linear-gradient(145deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)) !important;
-        backdrop-filter: blur(15px) !important;
-        border-radius: 25px !important;
-        padding: 2rem !important;
-        margin: 1.5rem 0 !important;
-        cursor: pointer !important;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
-        border: 2px solid rgba(255, 255, 255, 0.1) !important;
-        position: relative !important;
-        overflow: hidden !important;
+    .level-card-modern:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(145deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9));
     }
     
-    .level-card::after {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 0; height: 0;
-        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-        transition: all 0.8s ease;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-    }
-    
-    .level-card:hover::after {
-        width: 400px; height: 400px;
-    }
-    
-    .level-card:hover {
-        transform: translateY(-15px) scale(1.03) !important;
-        box-shadow: 0 25px 50px rgba(102, 126, 234, 0.5) !important;
-        border-color: rgba(255, 107, 157, 0.6) !important;
-    }
-    
-    .level-card.completed {
-        background: linear-gradient(145deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8)) !important;
-        animation: completedGlow 3s ease-in-out infinite alternate !important;
+    .level-card-modern.completed {
+        background: linear-gradient(145deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8));
+        border-color: rgba(56, 239, 125, 0.5);
+        animation: completedGlow 3s ease-in-out infinite alternate;
     }
     
     @keyframes completedGlow {
@@ -422,34 +353,50 @@ def apply_professional_gaming_css():
         to { box-shadow: 0 20px 45px rgba(17, 153, 142, 0.8), 0 0 30px rgba(56, 239, 125, 0.3); }
     }
     
-    .level-card.locked {
-        background: linear-gradient(145deg, rgba(85, 85, 85, 0.6), rgba(119, 119, 119, 0.6)) !important;
-        cursor: not-allowed !important;
-        opacity: 0.7 !important;
-        filter: grayscale(100%) !important;
+    .level-card-modern.locked {
+        background: linear-gradient(145deg, rgba(127, 140, 141, 0.6), rgba(149, 165, 166, 0.6));
+        border-color: rgba(127, 140, 141, 0.5);
+        cursor: not-allowed;
+        opacity: 0.6;
+        filter: grayscale(100%);
     }
     
-    /* ===== ENHANCED XP BAR ===== */
+    /* Enhanced XP bar with modern styling */
     .xp-bar-container {
-        background: rgba(0,0,0,0.4) !important;
-        backdrop-filter: blur(10px) !important;
-        border-radius: 20px !important;
-        padding: 12px !important;
-        margin: 15px 0 !important;
-        position: relative !important;
-        overflow: hidden !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 1rem;
+        margin: 2rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .xp-bar {
-        background: linear-gradient(90deg, #00ff87, #60efff, #ff6b9d, #ffd700) !important;
-        background-size: 300% 300% !important;
-        animation: xpFlow 4s ease infinite !important;
-        height: 30px !important;
-        border-radius: 15px !important;
-        position: relative !important;
-        transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        box-shadow: 0 0 25px rgba(0, 255, 135, 0.8) !important;
+        background: linear-gradient(90deg, #00ff87, #60efff, #ff6b9d);
+        background-size: 200% 200%;
+        animation: xpFlow 3s ease infinite;
+        height: 20px;
+        border-radius: 15px;
+        position: relative;
+        transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 0 25px rgba(0, 255, 135, 0.8);
+        overflow: hidden;
+    }
+    
+    .xp-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
     }
     
     @keyframes xpFlow {
@@ -457,27 +404,163 @@ def apply_professional_gaming_css():
         50% { background-position: 100% 50%; }
     }
     
-    /* ===== ENHANCED ACHIEVEMENT SYSTEM ===== */
-    .achievement-toast {
-        position: fixed !important;
-        top: 20px !important; 
-        right: 20px !important;
-        background: linear-gradient(145deg, rgba(240, 147, 251, 0.95), rgba(245, 87, 108, 0.95)) !important;
-        backdrop-filter: blur(15px) !important;
+    /* Enhanced level selection grid */
+    .level-selection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .level-selection-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .level-selection-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .level-selection-card.completed {
+        border-color: #27ae60;
+        background: linear-gradient(145deg, rgba(39, 174, 96, 0.3), rgba(46, 204, 113, 0.3));
+    }
+    
+    .level-selection-card.locked {
+        border-color: #7f8c8d;
+        background: linear-gradient(145deg, rgba(127, 140, 141, 0.3), rgba(149, 165, 166, 0.3));
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    
+    /* Enhanced generation interface */
+    .generation-interface {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .prompt-analyzer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .analyzer-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .analyzer-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-3px);
+    }
+    
+    /* Floating action buttons */
+    .fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff6b9d, #c44569);
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+    
+    .fab:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 35px rgba(255, 107, 157, 0.6);
+    }
+    
+    /* Enhanced buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         color: white !important;
-        padding: 1.5rem 2rem !important;
-        border-radius: 25px !important;
-        box-shadow: 0 15px 35px rgba(245, 87, 108, 0.5) !important;
-        animation: achievementSlide 0.8s ease-out, achievementGlow 3s ease-in-out infinite !important;
-        z-index: 9999 !important;
-        font-weight: bold !important;
-        max-width: 350px !important;
-        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        border: none !important;
+        border-radius: 20px !important;
+        padding: 1rem 2rem !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        font-family: 'Rajdhani', sans-serif !important;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-3px) scale(1.02) !important;
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6) !important;
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+    }
+    
+    .stButton > button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+    }
+    
+    .stButton > button:hover::before {
+        left: 100%;
+    }
+    
+    /* Achievement toast with modern styling */
+    .achievement-toast {
+        position: fixed;
+        top: 20px; right: 20px;
+        background: rgba(240, 147, 251, 0.9);
+        backdrop-filter: blur(20px);
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 35px rgba(245, 87, 108, 0.5);
+        animation: achievementSlide 0.5s ease-out, achievementGlow 3s ease-in-out infinite;
+        z-index: 9999;
+        font-weight: bold;
+        max-width: 300px;
     }
     
     @keyframes achievementSlide {
-        from { transform: translateX(100%) scale(0.8); opacity: 0; }
-        to { transform: translateX(0) scale(1); opacity: 1; }
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     
     @keyframes achievementGlow {
@@ -485,82 +568,54 @@ def apply_professional_gaming_css():
         50% { box-shadow: 0 20px 45px rgba(245, 87, 108, 0.8), 0 0 30px rgba(240, 147, 251, 0.4); }
     }
     
-    /* ===== COMBO EFFECTS ===== */
+    /* Combo explosion effect */
     .combo-explosion {
-        font-size: 3.5rem !important;
-        font-weight: 900 !important;
-        color: #FFD700 !important;
-        text-align: center !important;
-        margin: 1rem 0 !important;
-        text-shadow: 0 0 30px #FFD700 !important;
-        animation: comboExplosion 2s ease-out !important;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #FFD700;
+        text-align: center;
+        margin: 1rem 0;
+        text-shadow: 0 0 20px #FFD700;
+        animation: comboExplosion 2s ease-out;
+        position: relative;
     }
     
     @keyframes comboExplosion {
-        0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-        50% { transform: scale(1.4) rotate(5deg); opacity: 1; }
+        0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+        50% { transform: scale(1.3) rotate(5deg); opacity: 1; }
         100% { transform: scale(1) rotate(0deg); opacity: 1; }
     }
     
-    /* ===== ENHANCED SCROLLBARS ===== */
-    ::-webkit-scrollbar {
-        width: 12px !important;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.3) !important;
-        border-radius: 10px !important;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #667eea, #764ba2) !important;
-        border-radius: 10px !important;
-        border: 2px solid rgba(255, 255, 255, 0.1) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #f093fb, #ff6b9d) !important;
-        box-shadow: 0 0 10px rgba(255, 107, 157, 0.5) !important;
-    }
-    
-    /* ===== ENHANCED IMAGES ===== */
-    img {
-        border-radius: 20px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    img:hover {
-        transform: scale(1.05) !important;
-        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6) !important;
-        border-color: rgba(255, 107, 157, 0.8) !important;
-    }
-    
-    /* ===== RESPONSIVE DESIGN ===== */
-    @media (max-width: 768px) {
-        .professional-header h1 { font-size: 2.5rem !important; }
-        .block-container { padding: 1rem 2rem !important; }
-        .level-card { padding: 1.5rem !important; }
-        .stat-card { padding: 1.5rem !important; }
-    }
-    
-    /* ===== HIDE STREAMLIT ELEMENTS ===== */
+    /* Hide default Streamlit elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    .stDeployButton {display: none;}
     
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .modern-header h1 { font-size: 2.5rem; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .level-card-modern { padding: 1.5rem; margin: 1rem 0; }
+        .glass-card { padding: 1rem; }
+        .level-selection-grid { grid-template-columns: 1fr; }
+        .prompt-analyzer { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 480px) {
+        .stats-grid { grid-template-columns: 1fr; }
+        .modern-header h1 { font-size: 1.8rem; }
+        .modern-header { padding: 2rem 1rem; }
+        .prompt-analyzer { grid-template-columns: 1fr; }
+    }
     </style>
     """, unsafe_allow_html=True)
 
-apply_professional_gaming_css()
+apply_modern_glassmorphism_css()
 
-# ===== AI IMAGE GENERATION WITH ENHANCED FALLBACKS =====
+# ===== ENHANCED AI IMAGE GENERATION SYSTEM =====
 @st.cache_resource
 def load_stable_diffusion():
-    """Load Stable Diffusion model with enhanced error handling"""
+    """Load Stable Diffusion model with comprehensive error handling"""
     if not DIFFUSION_AVAILABLE or not HAS_TORCH:
         st.warning("🎨 AI Image Generation: Using Enhanced Preview Mode")
         st.info("💡 This ensures consistent performance across all devices and platforms!")
@@ -568,6 +623,7 @@ def load_stable_diffusion():
     
     try:
         with st.spinner("🎨 Loading Professional AI Model (First time: 2-5 minutes)..."):
+            # Initialize pipeline with optimized settings
             pipe = StableDiffusionPipeline.from_pretrained(
                 "runwayml/stable-diffusion-v1-5",
                 torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
@@ -576,6 +632,7 @@ def load_stable_diffusion():
                 use_safetensors=True
             )
             
+            # Optimize for available hardware
             if torch.cuda.is_available():
                 pipe = pipe.to("cuda")
                 pipe.enable_memory_efficient_attention()
@@ -590,6 +647,7 @@ def load_stable_diffusion():
             except:
                 pass
             
+            # Mark model as loaded
             st.session_state.model_loaded = True
             st.success("🎨 AI Model Ready for Professional Image Generation!")
             return pipe
@@ -604,15 +662,18 @@ def generate_professional_image(prompt, pipe, level_info=None):
     generation_key = f"{prompt}_{time.time()}"
     st.session_state.current_generation_key = generation_key
     
+    # Show generation mode info
     if st.session_state.generation_mode == 'preview_only' or pipe is None:
         img = create_professional_placeholder(prompt, level_info)
         generation_mode = "Enhanced Preview"
     else:
         try:
             with st.spinner("🎨 AI is creating your masterpiece..."):
+                # Optimize prompt for better results
                 optimized_prompt = optimize_prompt_for_generation(prompt, level_info)
                 
                 with torch.no_grad():
+                    # Generate with optimized parameters
                     result = pipe(
                         optimized_prompt,
                         num_inference_steps=20,
@@ -647,6 +708,7 @@ def generate_professional_image(prompt, pipe, level_info=None):
             img = create_professional_placeholder(prompt, level_info)
             generation_mode = "Enhanced Preview"
     
+    # Store generated image and metadata
     st.session_state.generated_images[generation_key] = {
         'image': img,
         'prompt': prompt,
@@ -662,6 +724,7 @@ def optimize_prompt_for_generation(prompt, level_info):
     """Optimize prompts for better AI generation results"""
     optimized = prompt.strip()
     
+    # Add quality enhancers based on level
     if level_info:
         level_id = None
         for lid, linfo in LEVELS.items():
@@ -669,14 +732,19 @@ def optimize_prompt_for_generation(prompt, level_info):
                 level_id = lid
                 break
         
-        if level_id and level_id >= 4:
+        if level_id and level_id >= 4:  # Advanced levels get quality boost
             quality_terms = ["high quality", "detailed", "masterpiece"]
             if not any(term in optimized.lower() for term in quality_terms):
                 optimized += ", high quality, detailed"
         
-        if level_id and level_id >= 5:
+        if level_id and level_id >= 5:  # Technical levels get precision terms
             if "detailed" not in optimized.lower():
                 optimized += ", ultra-detailed"
+        
+        # Add negative prompts for advanced levels
+        if level_id and level_id >= 5 and level_info.get('negative_prompts'):
+            # Note: This would be used with negative_prompt parameter in real implementation
+            pass
     
     return optimized
 
@@ -685,25 +753,32 @@ def create_professional_placeholder(prompt, level_info):
     img = Image.new('RGB', (512, 512), color='#1a1a2e')
     draw = ImageDraw.Draw(img)
     
+    # Create sophisticated gradient based on level theme
     if level_info:
         theme_color = level_info.get('theme_color', '#4ECDC4')
         
+        # Parse hex color to RGB
         try:
             theme_rgb = tuple(int(theme_color[i:i+2], 16) for i in (1, 3, 5))
         except:
-            theme_rgb = (78, 205, 196)
+            theme_rgb = (78, 205, 196)  # Default teal
         
+        # Create multi-layer gradient
         for y in range(512):
             ratio = y / 512
             
+            # Create three-tone gradient
             if ratio < 0.3:
+                # Dark base to theme color
                 factor = ratio / 0.3
                 r = int(26 + (theme_rgb[0] - 26) * factor)
                 g = int(26 + (theme_rgb[1] - 26) * factor)
                 b = int(46 + (theme_rgb[2] - 46) * factor)
             elif ratio < 0.7:
+                # Theme color stable
                 r, g, b = theme_rgb
             else:
+                # Theme color to lighter
                 factor = (ratio - 0.7) / 0.3
                 r = int(theme_rgb[0] + (255 - theme_rgb[0]) * factor * 0.4)
                 g = int(theme_rgb[1] + (255 - theme_rgb[1]) * factor * 0.4)
@@ -712,13 +787,16 @@ def create_professional_placeholder(prompt, level_info):
             color = f"#{r:02x}{g:02x}{b:02x}"
             draw.line([(0, y), (512, y)], fill=color)
     
+    # Add sophisticated text overlay
     try:
         font = ImageFont.load_default()
         
+        # Level branding
         level_title = level_info.get('title', 'AI Generated') if level_info else 'AI Generated'
         level_icon = level_info.get('icon', '🎨') if level_info else '🎨'
         difficulty = '⭐' * level_info.get('difficulty_stars', 1) if level_info else '⭐'
         
+        # Create professional layout
         text_elements = [
             (f"{level_icon} {level_title}", 150, 'title'),
             (f"{difficulty} Professional Training", 180, 'subtitle'),
@@ -733,22 +811,28 @@ def create_professional_placeholder(prompt, level_info):
         
         for text, y_pos, style in text_elements:
             if text and style != 'spacer':
+                # Calculate text positioning
                 bbox = draw.textbbox((0, 0), text, font=font)
                 text_width = bbox[2] - bbox[0]
                 x = (512 - text_width) // 2
                 
+                # Style-based rendering
                 if style == 'title':
+                    # Large, bold title with shadow
                     draw.text((x+3, y_pos+3), text, fill='black', font=font)
                     draw.text((x, y_pos), text, fill='white', font=font)
                 elif style == 'prompt':
+                    # Highlighted prompt text
                     draw.rectangle([x-10, y_pos-5, x+text_width+10, y_pos+20], fill='rgba(0,0,0,0.5)')
                     draw.text((x+2, y_pos+2), text, fill='black', font=font)
                     draw.text((x, y_pos), text, fill='#FFD700', font=font)
                 else:
+                    # Regular text with shadow
                     draw.text((x+2, y_pos+2), text, fill='black', font=font)
                     draw.text((x, y_pos), text, fill='white', font=font)
     
     except Exception as e:
+        # Fallback text if font loading fails
         try:
             draw.text((50, 250), "Professional AI Preview", fill='white')
             draw.text((50, 280), f"Prompt: {prompt[:30]}...", fill='#FFD700')
@@ -758,27 +842,24 @@ def create_professional_placeholder(prompt, level_info):
     return img
 
 # ===== COMPREHENSIVE UI COMPONENTS =====
-def create_professional_header():
-    """Create professional animated header with floating icons"""
+def create_modern_header():
+    """Create modern animated header with glassmorphism"""
     current_rank = calculate_user_rank()
     next_rank_xp = get_next_rank_xp()
     
+    # AI Model status
     model_status = "🤖 AI Ready" if st.session_state.model_loaded else "🎨 Preview Mode"
     
     st.markdown(f"""
-    <div class="professional-header">
-        <h1>
-            <span class="floating-icon pulse-glow">🎮</span> 
-            AI PROMPT MASTER 
-            <span class="floating-icon pulse-glow">🎮</span>
-        </h1>
-        <p style="font-size: 1.5rem; margin: 1rem 0; color: white; font-weight: 600;">
-            <span class="floating-icon">⭐</span> Level {st.session_state.current_level} • {current_rank} • {st.session_state.total_xp:,} XP <span class="floating-icon">⭐</span>
+    <div class="modern-header">
+        <h1>🎮 AI PROMPT MASTER 🎮</h1>
+        <p style="font-size: 1.5rem; margin: 1rem 0; color: white; font-weight: 600; position: relative; z-index: 2;">
+            Level {st.session_state.current_level} • {current_rank} • {st.session_state.total_xp:,} XP
         </p>
-        <p style="font-size: 1.2rem; color: white; opacity: 0.9;">
-            {model_status} • <span class="floating-icon">🔥</span> Combo: {st.session_state.combo_streak} • 
-            <span class="floating-icon">⚡</span> Energy: {st.session_state.energy}/{st.session_state.max_energy} • 
-            <span class="floating-icon">🎯</span> Streak: {st.session_state.daily_streak} days
+        <p style="font-size: 1.2rem; color: white; opacity: 0.9; position: relative; z-index: 2;">
+            {model_status} • 🔥 Combo: {st.session_state.combo_streak} • 
+            ⚡ Energy: {st.session_state.energy}/{st.session_state.max_energy} • 
+            🎯 Streak: {st.session_state.daily_streak} days
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -817,36 +898,38 @@ def get_next_rank_xp():
     else:
         return 2000
 
-def create_comprehensive_stats_dashboard():
-    """Create comprehensive stats dashboard"""
+def create_enhanced_stats_dashboard():
+    """Create enhanced stats dashboard with glassmorphism"""
+    
+    # Top stats row with modern glassmorphism cards
     st.markdown('<div class="stats-grid">', unsafe_allow_html=True)
     
     stats = [
-        ("💎", st.session_state.gems, "Gems"),
-        ("🪙", st.session_state.coins, "Coins"),
-        ("⚡", st.session_state.energy, "Energy"),
-        ("🔥", st.session_state.combo_streak, "Combo"),
-        ("🏆", len(st.session_state.achievements), "Achievements"),
-        ("📚", len(st.session_state.techniques_learned), "Techniques"),
-        ("🎨", len(st.session_state.styles_tried), "Styles"),
-        ("⭐", st.session_state.perfect_scores, "Perfect Scores")
+        ("💎", st.session_state.gems, "Gems", "#9b59b6"),
+        ("🪙", st.session_state.coins, "Coins", "#f39c12"),
+        ("⚡", f"{st.session_state.energy}/{st.session_state.max_energy}", "Energy", "#e74c3c"),
+        ("🔥", st.session_state.combo_streak, "Combo", "#e67e22"),
+        ("🏆", len(st.session_state.achievements), "Achievements", "#27ae60"),
+        ("🎯", st.session_state.total_xp, "Total XP", "#3498db")
     ]
     
-    for icon, value, label in stats:
+    for icon, value, label, color in stats:
         st.markdown(f"""
-        <div class="stat-card">
-            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">{icon}</div>
-            <div style="font-size: 2rem; font-weight: bold; color: #4ECDC4;">{value}</div>
-            <div style="font-size: 0.9rem; opacity: 0.8;">{label}</div>
+        <div class="stat-card" style="border-left: 4px solid {color};">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem; position: relative; z-index: 2;">{icon}</div>
+            <div style="font-size: 1.8rem; font-weight: bold; color: {color}; margin-bottom: 0.3rem; position: relative; z-index: 2;">{value}</div>
+            <div style="font-size: 0.9rem; opacity: 0.8; position: relative; z-index: 2;">{label}</div>
         </div>
         """, unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
     
+    # Enhanced XP Progress Bar
     current_xp = st.session_state.total_xp
     next_rank_xp = get_next_rank_xp()
     current_rank_xp = 0
     
+    # Calculate current rank base XP
     if next_rank_xp == 200:
         current_rank_xp = 0
     elif next_rank_xp == 500:
@@ -863,104 +946,140 @@ def create_comprehensive_stats_dashboard():
     
     st.markdown(f"""
     <div class="xp-bar-container">
-        <div style="margin-bottom: 8px; font-weight: 600;">
+        <div style="margin-bottom: 12px; font-weight: 600; font-size: 1.1rem;">
             Next Rank Progress: {current_xp:,} / {next_rank_xp:,} XP
         </div>
         <div class="xp-bar" style="width: {progress * 100}%;"></div>
-        <div style="text-align: center; margin-top: 8px; font-size: 0.9rem; opacity: 0.8;">
+        <div style="text-align: center; margin-top: 12px; font-size: 1rem; opacity: 0.8;">
             {int(progress * 100)}% to next rank
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-def create_enhanced_level_map():
-    """Create enhanced level map with comprehensive information"""
-    st.markdown("## 🗺️ **PROFESSIONAL TRAINING JOURNEY**")
+def create_modern_level_selection_grid():
+    """Create modern grid-based level selection with glassmorphism"""
+    st.markdown("## 🗺️ **YOUR LEARNING JOURNEY**")
     
+    # Progress overview with better visualization
     completed = len(st.session_state.completed_levels)
-    available = len([l for l in LEVELS.keys() if l <= st.session_state.current_level])
+    progress_percentage = (completed / len(LEVELS)) * 100
     
     st.markdown(f"""
-    <div style="text-align: center; margin: 2rem 0; padding: 1rem; 
-                background: rgba(255,255,255,0.1); border-radius: 15px;">
-        <h3 style="margin: 0; color: #4ECDC4;">Journey Progress: {completed}/{len(LEVELS)} Completed</h3>
-        <p style="margin: 0.5rem 0; opacity: 0.8;">
-            {available} Levels Available • {len(LEVELS) - available} Locked
-        </p>
+    <div class="glass-card" style="text-align: center; margin: 2rem 0;">
+        <h3 style="color: #4ECDC4; margin-bottom: 1rem;">🌟 Journey Progress</h3>
+        <div style="font-size: 3rem; font-weight: 900; color: #FFD700; margin: 1rem 0;">{completed}/{len(LEVELS)}</div>
+        <div style="margin: 1rem 0;">
+            <div style="background: rgba(0,0,0,0.3); border-radius: 25px; height: 15px; overflow: hidden; backdrop-filter: blur(10px);">
+                <div style="background: linear-gradient(90deg, #11998e, #38ef7d); height: 100%; width: {progress_percentage}%; transition: width 1s ease; border-radius: 25px;"></div>
+            </div>
+        </div>
+        <p style="opacity: 0.8; font-size: 1.1rem;">Mastery Level: {progress_percentage:.0f}%</p>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Create 2x4 grid for levels with modern cards
+    st.markdown('<div class="level-selection-grid">', unsafe_allow_html=True)
     
     for level_id, level_data in LEVELS.items():
         is_unlocked = level_id <= st.session_state.current_level
         is_completed = level_id in st.session_state.completed_levels
         
+        # Status styling
         if is_completed:
-            card_class = "level-card completed"
+            card_class = "level-selection-card completed"
             status_icon = "✅"
             status_text = "MASTERED"
         elif is_unlocked:
-            card_class = "level-card"
+            card_class = "level-selection-card"
             status_icon = "🔓"
             status_text = "AVAILABLE"
         else:
-            card_class = "level-card locked"
+            card_class = "level-selection-card locked"
             status_icon = "🔒"
             status_text = "LOCKED"
         
-        techniques_text = " • ".join(level_data['techniques'][:2])
         st.markdown(f"""
         <div class="{card_class}">
-            <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <div style="font-size: 4rem;">{level_data['icon']}</div>
-                <div style="flex: 1;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin: 0; color: white; font-size: 1.8rem;">
-                            Level {level_id}: {level_data['title']}
-                        </h3>
-                        <span style="background: rgba(0,0,0,0.4); padding: 0.5rem 1rem; 
-                                     border-radius: 20px; font-weight: bold; color: white;">
-                            {status_icon} {status_text}
-                        </span>
-                    </div>
-                    <p style="margin: 0.8rem 0; opacity: 0.95; color: white; font-size: 1.1rem;">
-                        {level_data['description']}
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1rem 0;">
-                        <span style="display: flex; align-items: center; gap: 0.3rem;">
-                            {'⭐' * level_data['difficulty_stars']}
-                            <small style="opacity: 0.8;">Difficulty</small>
-                        </span>
-                        <span style="background: rgba(0,0,0,0.3); padding: 0.3rem 1rem; border-radius: 15px;">
-                            {level_data['min_xp_to_pass']} XP to complete
-                        </span>
-                        <span style="background: rgba(0,0,0,0.3); padding: 0.3rem 1rem; border-radius: 15px;">
-                            Max {level_data['max_words']} words
-                        </span>
-                    </div>
-                    <div style="margin: 0.5rem 0;">
-                        <small style="opacity: 0.8; font-style: italic;">Key Techniques: {techniques_text}</small>
-                    </div>
-                </div>
+            <div style="font-size: 4rem; margin-bottom: 1rem;">{level_data['icon']}</div>
+            <h4 style="color: white; margin: 0.5rem 0; font-size: 1.2rem; font-weight: 700;">Level {level_id}: {level_data['title']}</h4>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem 0; line-height: 1.4;">{level_data['description'][:60]}...</p>
+            <div style="margin-top: auto;">
+                <div style="font-size: 1.2rem; margin: 0.5rem 0;">{status_icon}</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 0.5rem;">{'⭐' * level_data['difficulty_stars']}</div>
+                <div style="font-size: 0.8rem; font-weight: 600; color: #4ECDC4;">{status_text}</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Level selection buttons below the grid
+    st.markdown("### 🎮 **SELECT LEVEL TO BEGIN**")
+    cols = st.columns(4)
+    
+    for i, (level_id, level_data) in enumerate(LEVELS.items()):
+        col_idx = i % 4
+        is_unlocked = level_id <= st.session_state.current_level
         
-        if is_unlocked:
-            col1, col2, col3 = st.columns([2, 1, 1])
-            
-            with col1:
-                button_text = "🎮 START TRAINING" if not is_completed else "🔄 RETRAIN"
-                if st.button(button_text, key=f"play_{level_id}", type="primary"):
+        with cols[col_idx]:
+            if is_unlocked:
+                if st.button(f"🚀 Enter Level {level_id}", key=f"enter_{level_id}", use_container_width=True):
                     st.session_state.selected_level = level_id
                     st.rerun()
+            else:
+                st.button(f"🔒 Level {level_id}", key=f"locked_{level_id}", disabled=True, use_container_width=True)
+
+def create_enhanced_generation_interface(level_info, user_prompt):
+    """Enhanced image generation interface with real-time analysis"""
+    
+    # Generation controls with modern design
+    st.markdown("""
+    <div class="generation-interface">
+        <h3 style="color: #4ECDC4; margin-bottom: 1.5rem; text-align: center;">🎨 Creation Studio</h3>
+    """, unsafe_allow_html=True)
+    
+    # Real-time prompt analyzer with visual indicators
+    if user_prompt:
+        word_count = len(user_prompt.split())
+        max_words = level_info['max_words']
+        
+        # Keyword analysis
+        required_found = sum(1 for kw in level_info['required_keywords'] if kw in user_prompt.lower())
+        bonus_found = sum(1 for kw in level_info.get('bonus_keywords', []) if kw in user_prompt.lower())
+        secret_found = sum(1 for kw in level_info.get('secret_keywords', []) if kw in user_prompt.lower())
+        
+        # Visual feedback with modern cards
+        st.markdown(f"""
+        <div class="prompt-analyzer">
+            <div class="analyzer-card">
+                <div style="font-size: 2rem; color: {'#27ae60' if word_count <= max_words else '#e74c3c'}; margin-bottom: 0.5rem;">{word_count}</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">/ {max_words} words</div>
+                <div style="width: 100%; background: rgba(0,0,0,0.3); border-radius: 10px; height: 8px; margin-top: 0.5rem; overflow: hidden;">
+                    <div style="width: {min(100, (word_count/max_words)*100)}%; background: {'linear-gradient(90deg, #27ae60, #2ecc71)' if word_count <= max_words else 'linear-gradient(90deg, #e74c3c, #c0392b)'}; height: 100%; border-radius: 10px; transition: all 0.3s ease;"></div>
+                </div>
+            </div>
             
-            with col2:
-                if st.button("📖 Tutorial", key=f"tutorial_{level_id}"):
-                    st.info(f"**{level_data['tutorial']}**")
+            <div class="analyzer-card">
+                <div style="font-size: 2rem; color: {'#27ae60' if required_found > 0 else '#e74c3c'}; margin-bottom: 0.5rem;">{required_found}</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">Required</div>
+                <div style="font-size: 1.5rem; margin-top: 0.3rem;">{'✅' if required_found > 0 else '❌'}</div>
+            </div>
             
-            with col3:
-                if st.button("🎯 Example", key=f"example_{level_id}"):
-                    st.success(f"Example: `{level_data['example_prompt']}`")
+            <div class="analyzer-card">
+                <div style="font-size: 2rem; color: #4ECDC4; margin-bottom: 0.5rem;">{bonus_found}</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">Bonus</div>
+                <div style="font-size: 1.5rem; margin-top: 0.3rem;">{'🌟' if bonus_found > 0 else '💤'}</div>
+            </div>
+            
+            <div class="analyzer-card">
+                <div style="font-size: 2rem; color: #FFD700; margin-bottom: 0.5rem;">{secret_found}</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">Secrets</div>
+                <div style="font-size: 1.5rem; margin-top: 0.3rem;">{'🎉' if secret_found > 0 else '🔍'}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("</div>", unsafe_allow_html=True)
 
 def calculate_comprehensive_xp_gain(prompt, level_info):
     """Comprehensive XP calculation with all mechanics"""
@@ -969,28 +1088,34 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
     xp_gained = 0
     feedback = []
     
+    # Basic validation
     if len(prompt_words) > level_info['max_words']:
         return 0, [f"❌ Prompt too long! ({len(prompt_words)}/{level_info['max_words']} words)"]
     
+    # Required keywords check
     required_found = sum(1 for kw in level_info['required_keywords'] if kw in prompt_lower)
     if required_found == 0:
         return 0, ["❌ Include at least one required keyword to earn XP!"]
     
+    # Base XP calculation
     base_multiplier = required_found / len(level_info['required_keywords'])
     base_xp = int(level_info['base_xp'] * base_multiplier)
     xp_gained += base_xp
     feedback.append(f"✅ Base XP: +{base_xp} ({required_found}/{len(level_info['required_keywords'])} required keywords)")
     
+    # Bonus keywords
     bonus_found = sum(1 for kw in level_info.get('bonus_keywords', []) if kw in prompt_lower)
     if bonus_found > 0:
         bonus_xp = bonus_found * level_info['bonus_xp']
         xp_gained += bonus_xp
         feedback.append(f"🌟 Bonus XP: +{bonus_xp} ({bonus_found} bonus keywords found)")
         
+        # Track styles tried
         style_keywords = ["impressionist", "cyberpunk", "minimalist", "baroque", "renaissance", "modern"]
         found_styles = [kw for kw in level_info.get('bonus_keywords', []) if kw in style_keywords and kw in prompt_lower]
         st.session_state.styles_tried.update(found_styles)
     
+    # Secret keywords (major bonus)
     secret_found = [kw for kw in level_info.get('secret_keywords', []) if kw in prompt_lower]
     if secret_found:
         secret_xp = len(secret_found) * level_info['secret_xp']
@@ -999,25 +1124,28 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
         st.session_state.secret_keywords_found.update(secret_found)
         check_achievement("secret_hunter")
     
+    # Length optimization bonus
     optimal_range = (level_info['max_words'] * 0.6, level_info['max_words'] * 0.9)
     if optimal_range[0] <= len(prompt_words) <= optimal_range[1]:
         length_bonus = 25
         xp_gained += length_bonus
         feedback.append(f"📝 Optimal Length: +{length_bonus} XP (perfect prompt length)")
     
+    # Creativity bonus (unique word combinations)
     unique_words = len(set(prompt_words))
-    if unique_words >= len(prompt_words) * 0.8:
+    if unique_words >= len(prompt_words) * 0.8:  # 80% unique words
         creativity_bonus = 30
         xp_gained += creativity_bonus
         feedback.append(f"🎨 Creativity Bonus: +{creativity_bonus} XP (excellent word variety)")
     
+    # Combo system with enhanced multipliers
     if xp_gained >= level_info['min_xp_to_pass']:
         st.session_state.combo_streak += 1
         if st.session_state.combo_streak > st.session_state.max_combo:
             st.session_state.max_combo = st.session_state.combo_streak
         
         if st.session_state.combo_streak >= 2:
-            combo_multiplier = 1 + (st.session_state.combo_streak * 0.15)
+            combo_multiplier = 1 + (st.session_state.combo_streak * 0.15)  # 15% per combo
             original_xp = xp_gained
             xp_gained = int(xp_gained * combo_multiplier)
             combo_bonus = xp_gained - original_xp
@@ -1025,18 +1153,20 @@ def calculate_comprehensive_xp_gain(prompt, level_info):
     else:
         st.session_state.combo_streak = 0
     
+    # Perfect score detection
     max_possible_xp = (level_info['base_xp'] + 
                       len(level_info.get('bonus_keywords', [])) * level_info['bonus_xp'] + 
                       len(level_info.get('secret_keywords', [])) * level_info['secret_xp'] +
-                      100)
+                      100)  # Additional bonuses
     
-    if xp_gained >= max_possible_xp * 0.9:
+    if xp_gained >= max_possible_xp * 0.9:  # 90% of max possible
         st.session_state.perfect_scores += 1
         perfect_bonus = 50
         xp_gained += perfect_bonus
         feedback.append(f"💎 PERFECT SCORE! +{perfect_bonus} XP bonus")
         check_achievement("perfectionist")
     
+    # Update keyword discovery tracking
     st.session_state.keywords_discovered.update(prompt_words)
     
     return xp_gained, feedback
@@ -1050,6 +1180,7 @@ def check_achievement(achievement_key):
     if not achievement:
         return False
     
+    # Check achievement conditions
     earned = False
     
     if achievement_key == "first_steps" and st.session_state.images_generated_today >= 1:
@@ -1090,26 +1221,26 @@ def show_achievement_popup(achievement):
     st.balloons()
 
 def play_enhanced_level(level_id):
-    """Enhanced level play with comprehensive features and working image generation"""
+    """Enhanced level play with modern UI and comprehensive features"""
     level_info = LEVELS[level_id]
     
+    # Modern level header with glassmorphism
     st.markdown(f"""
-    <div style="background: {level_info['theme_color']}; padding: 3rem 2rem; 
-                border-radius: 25px; margin-bottom: 2rem; position: relative; overflow: hidden;">
+    <div class="glass-card" style="background: {level_info['theme_color']}; margin-bottom: 2rem;">
         <div style="display: flex; align-items: center; gap: 2rem;">
             <div style="font-size: 5rem;">{level_info['icon']}</div>
             <div style="flex: 1;">
-                <h1 style="margin: 0; color: white; font-size: 2.5rem;">
+                <h1 style="margin: 0; color: white; font-size: 2.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
                     Level {level_id}: {level_info['title']}
                 </h1>
                 <p style="margin: 0.5rem 0; color: white; opacity: 0.95; font-size: 1.3rem;">
                     {level_info['description']}
                 </p>
                 <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <span style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 15px; color: white;">
+                    <span style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 15px; color: white; backdrop-filter: blur(10px);">
                         {'⭐' * level_info['difficulty_stars']} Difficulty
                     </span>
-                    <span style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 15px; color: white;">
+                    <span style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 15px; color: white; backdrop-filter: blur(10px);">
                         {level_info['min_xp_to_pass']} XP to complete
                     </span>
                 </div>
@@ -1118,6 +1249,7 @@ def play_enhanced_level(level_id):
     </div>
     """, unsafe_allow_html=True)
     
+    # Tutorial section with modern styling
     with st.expander(f"📖 {level_info['title']} Tutorial", expanded=False):
         st.markdown(f"""
         **🎯 Learning Focus:** {level_info['learning_focus']}
@@ -1132,23 +1264,35 @@ def play_enhanced_level(level_id):
         
         st.markdown(f"**Example:** `{level_info['example_prompt']}`")
     
+    # Requirements and hints section with modern cards
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("### ✅ **REQUIRED KEYWORDS**")
+        st.markdown("""
+        <div class="glass-card">
+            <h4 style="color: #4ECDC4; margin-bottom: 1rem;">✅ REQUIRED KEYWORDS</h4>
+        """, unsafe_allow_html=True)
+        
         for i, kw in enumerate(level_info['required_keywords']):
             discovered = kw in st.session_state.keywords_discovered
             icon = "🎯" if discovered else "🔍"
             xp_value = level_info['base_xp'] // len(level_info['required_keywords'])
             st.markdown(f"{icon} `{kw}` (+{xp_value} XP)")
         
+        # Show negative prompts for advanced levels
         if level_info.get('negative_prompts') and level_id >= 5:
             st.markdown("### 🚫 **AVOID THESE TERMS**")
             for neg in level_info['negative_prompts'][:3]:
                 st.markdown(f"❌ `{neg}`")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
     
     with col2:
-        st.markdown("### 🌟 **BONUS KEYWORDS**")
+        st.markdown("""
+        <div class="glass-card">
+            <h4 style="color: #4ECDC4; margin-bottom: 1rem;">🌟 BONUS KEYWORDS</h4>
+        """, unsafe_allow_html=True)
+        
         for kw in level_info.get('bonus_keywords', [])[:6]:
             discovered = kw in st.session_state.keywords_discovered
             icon = "💎" if discovered else "💰"
@@ -1158,12 +1302,17 @@ def play_enhanced_level(level_id):
             st.markdown("### 🤫 **SECRET KEYWORDS**")
             secrets_found = len([s for s in level_info['secret_keywords'] if s in st.session_state.secret_keywords_found])
             st.markdown(f"🔍 *{secrets_found}/{len(level_info['secret_keywords'])} discovered*")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
     
+    # Enhanced prompt input section
     st.markdown("### ✏️ **CREATE YOUR MASTERPIECE**")
     
+    # Example prompt display
     st.markdown("**💡 Example Prompt:**")
     st.code(level_info['example_prompt'], language="text")
     
+    # Generation mode selector
     mode_col1, mode_col2 = st.columns([2, 1])
     with mode_col1:
         st.session_state.generation_mode = st.selectbox(
@@ -1177,6 +1326,7 @@ def play_enhanced_level(level_id):
             help="Choose your preferred image generation method"
         )
     
+    # Advanced prompt input with real-time feedback
     user_prompt = st.text_area(
         f"Enter your prompt (max {level_info['max_words']} words):",
         height=150,
@@ -1184,43 +1334,11 @@ def play_enhanced_level(level_id):
         help=f"Focus on: {level_info['learning_focus']}"
     )
     
+    # Real-time prompt analysis with modern interface
     if user_prompt:
-        word_count = len(user_prompt.split())
-        max_words = level_info['max_words']
-        
-        if word_count > max_words:
-            st.error(f"⚠️ Too many words! ({word_count}/{max_words})")
-        else:
-            progress = word_count / max_words
-            color = "#ff4757" if progress > 0.9 else "#ffa502" if progress > 0.7 else "#26de81"
-            
-            required_found = sum(1 for kw in level_info['required_keywords'] if kw in user_prompt.lower())
-            bonus_found = sum(1 for kw in level_info.get('bonus_keywords', []) if kw in user_prompt.lower())
-            secret_found = sum(1 for kw in level_info.get('secret_keywords', []) if kw in user_prompt.lower())
-            
-            st.markdown(f"""
-            <div style="background: rgba(0,0,0,0.3); border-radius: 15px; padding: 1rem; margin: 1rem 0;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; text-align: center;">
-                    <div>
-                        <div style="font-size: 1.5rem; color: {color};">{word_count}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">/ {max_words} words</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; color: {'#26de81' if required_found > 0 else '#ff4757'};">{required_found}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">Required</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; color: #4ECDC4;">{bonus_found}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">Bonus</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; color: #FFD700;">{secret_found}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">Secrets</div>
-                    </div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+        create_enhanced_generation_interface(level_info, user_prompt)
     
+    # Enhanced control buttons
     col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
     
     with col1:
@@ -1253,8 +1371,15 @@ def play_enhanced_level(level_id):
             st.session_state.selected_level = level_id - 1
             st.rerun()
     
+    # Energy management with modern styling
     if st.session_state.energy < energy_cost:
-        st.warning(f"⚡ Need {energy_cost} energy to generate images!")
+        st.markdown("""
+        <div class="glass-card" style="border-left: 4px solid #e74c3c;">
+            <h4 style="color: #e74c3c;">⚡ Energy Required</h4>
+            <p>You need {energy_cost} energy to generate images!</p>
+        </div>
+        """.format(energy_cost=energy_cost), unsafe_allow_html=True)
+        
         col1, col2 = st.columns(2)
         with col1:
             if st.button("💰 Buy 50 Energy (100 coins)", disabled=st.session_state.coins < 100):
@@ -1265,23 +1390,32 @@ def play_enhanced_level(level_id):
         with col2:
             st.info("⏰ Energy regenerates over time!")
     
+    # Enhanced generation and results
     if generate_btn and user_prompt.strip():
+        # Consume energy
         st.session_state.energy = max(0, st.session_state.energy - energy_cost)
         
         col1, col2 = st.columns([1, 1])
         
         with col1:
-            st.markdown("### 🎨 **YOUR CREATION**")
+            st.markdown("""
+            <div class="glass-card">
+                <h4 style="color: #4ECDC4; margin-bottom: 1rem;">🎨 YOUR CREATION</h4>
+            """, unsafe_allow_html=True)
             
+            # Load AI model if needed
             if st.session_state.generation_mode != 'preview_only':
                 pipe = load_stable_diffusion()
             else:
                 pipe = None
             
+            # Generate image with enhanced system
             generated_image, generation_mode = generate_professional_image(user_prompt, pipe, level_info)
             
+            # Display with enhanced presentation
             st.image(generated_image, width=500, caption=f"Level {level_id} • {generation_mode}")
             
+            # Show generation info
             if generation_mode == "AI Generated":
                 st.success("🤖 **Real AI Generation** - Your prompt created this unique image!")
             elif generation_mode == "AI Generated (CPU)":
@@ -1289,6 +1423,7 @@ def play_enhanced_level(level_id):
             else:
                 st.info("🎨 **Enhanced Preview** - Professional-quality themed preview!")
             
+            # Enhanced download options
             img_buffer = io.BytesIO()
             generated_image.save(img_buffer, format='PNG')
             
@@ -1310,28 +1445,38 @@ def play_enhanced_level(level_id):
                         'timestamp': datetime.now()
                     })
                     st.success("Added to portfolio!")
+            
+            st.markdown("</div>", unsafe_allow_html=True)
         
         with col2:
-            st.markdown("### 📊 **PERFORMANCE ANALYSIS**")
+            st.markdown("""
+            <div class="glass-card">
+                <h4 style="color: #4ECDC4; margin-bottom: 1rem;">📊 PERFORMANCE ANALYSIS</h4>
+            """, unsafe_allow_html=True)
             
+            # Comprehensive XP calculation
             xp_gained, feedback = calculate_comprehensive_xp_gain(user_prompt, level_info)
             
             if xp_gained > 0:
+                # Show combo explosion effect
                 if st.session_state.combo_streak >= 3:
                     st.markdown(f'<div class="combo-explosion">🔥 COMBO x{st.session_state.combo_streak}!</div>', 
                                unsafe_allow_html=True)
                 
+                # Update all currencies
                 old_xp = st.session_state.total_xp
                 st.session_state.total_xp += xp_gained
                 coins_earned = xp_gained // 8
                 st.session_state.coins += coins_earned
                 
+                # Level completion check
                 level_completed = xp_gained >= level_info['min_xp_to_pass']
                 if level_completed and level_id not in st.session_state.completed_levels:
                     st.session_state.completed_levels.add(level_id)
                     st.session_state.gems += 10
                     st.balloons()
                     
+                    # Unlock next level
                     if st.session_state.current_level == level_id:
                         st.session_state.current_level = min(len(LEVELS), level_id + 1)
                     
@@ -1343,8 +1488,10 @@ def play_enhanced_level(level_id):
                     </div>
                     """, unsafe_allow_html=True)
                 
+                # Success display
                 st.success(f"🎉 **EXCELLENT WORK!** +{xp_gained} XP • +{coins_earned} coins")
                 
+                # Progress visualization
                 progress = min(1.0, xp_gained / level_info['min_xp_to_pass'])
                 st.markdown(f"""
                 <div class="xp-bar-container">
@@ -1353,6 +1500,7 @@ def play_enhanced_level(level_id):
                 </div>
                 """, unsafe_allow_html=True)
                 
+                # Detailed feedback with enhanced presentation
                 st.markdown("#### 🔍 **DETAILED ANALYSIS**")
                 for msg in feedback:
                     if "SECRET" in msg:
@@ -1365,6 +1513,7 @@ def play_enhanced_level(level_id):
                     else:
                         st.info(msg)
                 
+                # Achievement checks
                 check_achievement("first_steps")
                 if len(st.session_state.keywords_discovered) >= 25:
                     check_achievement("word_collector")
@@ -1387,14 +1536,20 @@ def play_enhanced_level(level_id):
                 
                 for msg in feedback:
                     st.info(msg)
+            
+            st.markdown("</div>", unsafe_allow_html=True)
 
 # ===== MAIN APPLICATION =====
 def main():
-    """Enhanced main application with working image generation"""
+    """Enhanced main application with modern glassmorphism UI"""
     
-    create_professional_header()
-    create_comprehensive_stats_dashboard()
+    # Modern header
+    create_modern_header()
     
+    # Enhanced stats dashboard
+    create_enhanced_stats_dashboard()
+    
+    # Check for daily login bonus
     today = datetime.now().date()
     if st.session_state.last_play_date != today:
         st.session_state.last_play_date = today
@@ -1413,73 +1568,18 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
+        # Check for daily streak achievement
         if st.session_state.daily_streak >= 7:
             check_achievement("daily_warrior")
     
+    # Energy regeneration
     current_time = datetime.now()
     if 'last_energy_regen' not in st.session_state:
         st.session_state.last_energy_regen = current_time
     
     time_diff = (current_time - st.session_state.last_energy_regen).total_seconds()
-    if time_diff >= 3600:
+    if time_diff >= 3600:  # 1 hour
         energy_regen = min(10, st.session_state.max_energy - st.session_state.energy)
         st.session_state.energy += energy_regen
-        st.session_state.last_energy_regen = current_time
-        if energy_regen > 0:
-            st.info(f"⚡ Energy regenerated: +{energy_regen}")
-    
-    if st.session_state.selected_level is None:
-        if st.session_state.total_xp == 0:
-            st.markdown("""
-            ## 🌟 **WELCOME TO AI PROMPT MASTER!**
-            
-            The ultimate **professional training platform** for mastering AI prompt engineering! 
-            
-            ### 🎯 **What Makes This Special:**
-            - 🤖 **Real AI Image Generation** - Experience actual Stable Diffusion technology
-            - 🎨 **Enhanced Preview Mode** - Professional fallbacks for all devices  
-            - 🎮 **8 Progressive Levels** - From beginner to expert certification
-            - 🏆 **Advanced Gamification** - XP, achievements, combos, and daily challenges
-            - 📚 **Professional Techniques** - Learn industry-standard prompt engineering
-            
-            ### 🚀 **Your Journey Awaits:**
-            Start with **Level 1: Word Discovery** and progress through increasingly sophisticated 
-            prompt engineering techniques used by professionals worldwide!
-            
-            *Ready to transform your AI skills? Choose Level 1 below to begin!*
-            """)
-        
-        create_enhanced_level_map()
-        
-        if st.session_state.user_portfolio:
-            st.markdown("---")
-            st.markdown("## 🖼️ **YOUR PORTFOLIO**")
-            
-            portfolio_cols = st.columns(min(4, len(st.session_state.user_portfolio)))
-            for i, portfolio_item in enumerate(st.session_state.user_portfolio[-4:]):
-                with portfolio_cols[i % len(portfolio_cols)]:
-                    st.image(portfolio_item['image'], width=150)
-                    st.caption(f"Level {portfolio_item['level']} • {portfolio_item['mode']}")
-        
-        if st.session_state.achievements:
-            st.markdown("---")
-            st.markdown("## 🏆 **ACHIEVEMENT GALLERY**")
-            
-            achievement_cols = st.columns(4)
-            for i, achievement_key in enumerate(st.session_state.achievements):
-                achievement = ACHIEVEMENTS[achievement_key]
-                with achievement_cols[i % 4]:
-                    st.markdown(f"""
-                    <div style="text-align: center; background: rgba(255,215,0,0.1); 
-                                padding: 1rem; border-radius: 10px; margin: 0.5rem 0;">
-                        <div style="font-size: 2rem;">{achievement['icon']}</div>
-                        <div style="font-weight: bold; margin: 0.5rem 0;">{achievement['name']}</div>
-                        <small>{achievement['desc']}</small>
-                    </div>
-                    """, unsafe_allow_html=True)
-    
-    else:
-        play_enhanced_level(st.session_state.selected_level)
+        st.session_state.last_energy
 
-if __name__ == "__main__":
-    main()
