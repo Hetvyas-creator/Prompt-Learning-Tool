@@ -32,14 +32,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ===== COMPREHENSIVE LEVEL SYSTEM (8 LEVELS) =====
+# ===== COMPLETE 8-LEVEL SYSTEM =====
 LEVELS = {
     1: {
         "title": "Word Discovery", "icon": "🧙‍♂️", "theme_color": "#FF6B9D",
         "description": "Master basic vocabulary and word-image relationships",
         "learning_focus": "Understanding how words translate to visual elements",
         "what_to_do": "Learn how individual words create visual magic! Start with simple, positive words that paint clear pictures in your mind.",
-        "how_to_do": "1. Use simple words like 'bright', 'magical', 'sparkle'\n2. Focus on what you WANT to see, not what you don't want\n3. Keep it under 6 words\n4. Think like you're describing a scene to a friend",
+        "how_to_do": "Use simple words like 'bright', 'magical', 'sparkle'. Focus on what you WANT to see, not what you don't want. Keep it under 6 words. Think like you're describing a scene to a friend.",
         "step_by_step": [
             "Pick a main subject (cat, dragon, castle)",
             "Add 2-3 descriptive words (magical, bright, colorful)",
@@ -62,7 +62,7 @@ LEVELS = {
         "description": "Build complete scenes with Subject + Action + Setting structure",
         "learning_focus": "Creating coherent visual narratives",
         "what_to_do": "Build complete movie-like scenes! Learn the secret formula: WHO + WHAT + WHERE to create amazing visual stories.",
-        "how_to_do": "1. Pick your main character (WHO)\n2. Choose what they're doing (WHAT)\n3. Set the location (WHERE)\n4. Use scene-building keywords to enhance",
+        "how_to_do": "Pick your main character (WHO). Choose what they're doing (WHAT). Set the location (WHERE). Use scene-building keywords to enhance.",
         "step_by_step": [
             "Choose your main subject (dragon, princess, warrior)",
             "Add an action (flying, dancing, fighting)",
@@ -85,7 +85,7 @@ LEVELS = {
         "description": "Master lighting, camera angles, and lens techniques",
         "learning_focus": "Technical photography and cinematography concepts",
         "what_to_do": "Become the director! Control lighting, camera angles, and visual effects like a movie director to create stunning, professional-looking images.",
-        "how_to_do": "1. Choose your lighting (golden hour, dramatic, soft)\n2. Pick camera angle (close-up, wide angle, macro)\n3. Add technical terms for quality\n4. Think like a photographer!",
+        "how_to_do": "Choose your lighting (golden hour, dramatic, soft). Pick camera angle (close-up, wide angle, macro). Add technical terms for quality. Think like a photographer!",
         "step_by_step": [
             "Start with your subject",
             "Add lighting keywords (golden hour, dramatic)",
@@ -103,13 +103,12 @@ LEVELS = {
         "example_prompt": "Professional macro lens close-up with soft golden hour lighting, cinematic angle",
         "tutorial": "Control your 'camera': golden hour = warm light, wide angle = expansive view, macro = extreme close-up"
     },
-    # Add remaining levels 4-8 with similar detailed explanations...
     4: {
         "title": "Style Mastery", "icon": "🎨", "theme_color": "#E74C3C",
         "description": "Apply artistic movements and stylistic direction",
         "learning_focus": "Art history and aesthetic choices",
         "what_to_do": "Become an art historian! Learn to apply famous art styles like Picasso, Van Gogh, or futuristic cyberpunk to transform your images into masterpieces.",
-        "how_to_do": "1. Choose an art style (impressionist, cyberpunk, minimalist)\n2. Add style-specific keywords\n3. Include quality terms\n4. Reference famous art movements",
+        "how_to_do": "Choose an art style (impressionist, cyberpunk, minimalist). Add style-specific keywords. Include quality terms. Reference famous art movements.",
         "step_by_step": [
             "Pick your base subject",
             "Choose an art movement (impressionist, baroque, modern)",
@@ -126,8 +125,99 @@ LEVELS = {
         "techniques": ["Art movement integration", "Style consistency", "Aesthetic coherence"],
         "example_prompt": "Impressionist style masterpiece painting with vibrant colors, museum gallery quality",
         "tutorial": "Reference art movements: 'impressionist' = soft brushstrokes, 'cyberpunk' = neon + tech, 'minimalist' = clean + simple"
+    },
+    5: {
+        "title": "Technical Precision", "icon": "⚙️", "theme_color": "#F39C12",
+        "description": "Advanced parameters, negative prompts, and quality control",
+        "learning_focus": "Technical optimization and parameter control",
+        "what_to_do": "Master the technical side! Learn advanced techniques like negative prompting and quality parameters to create flawless, professional-grade images.",
+        "how_to_do": "Use technical quality terms (4k, ultra-detailed, sharp). Learn negative prompting to remove unwanted elements. Add precision words for clarity.",
+        "step_by_step": [
+            "Start with your main concept",
+            "Add quality enhancers (4k, ultra-detailed, sharp)",
+            "Include precision terms (technically perfect, flawless)",
+            "Use negative prompts to avoid unwanted elements",
+            "Create studio-quality masterpieces!"
+        ],
+        "required_keywords": ["detailed", "quality", "precise"],
+        "bonus_keywords": ["4k", "ultra-detailed", "high-resolution", "sharp", "crisp", "perfect"],
+        "secret_keywords": ["technically perfect", "flawless", "studio quality"],
+        "negative_prompts": ["blurry", "pixelated", "low quality", "amateur"],
+        "min_xp_to_pass": 300, "base_xp": 130, "bonus_xp": 40, "secret_xp": 90,
+        "max_words": 18, "difficulty_stars": 5,
+        "techniques": ["Negative prompting", "Quality enhancement", "Parameter optimization"],
+        "example_prompt": "Ultra-detailed 4k studio quality portrait, technically perfect lighting, crisp sharp focus",
+        "tutorial": "Use negative prompts to remove unwanted elements. Add quality words: '4k', 'detailed', 'sharp'"
+    },
+    6: {
+        "title": "Creative Formulas", "icon": "🔮", "theme_color": "#8E44AD",
+        "description": "Advanced prompt patterns and creative techniques",
+        "learning_focus": "Creative pattern recognition and innovation",
+        "what_to_do": "Unlock creative genius! Learn advanced prompt formulas and patterns to create surreal, imaginative, and groundbreaking artistic concepts.",
+        "how_to_do": "Use creative formulas like '[Object] made of [Material]' or '[Emotion] as [Physical form]'. Experiment with surreal combinations and abstract concepts.",
+        "step_by_step": [
+            "Choose your creative formula pattern",
+            "Pick unusual material combinations",
+            "Add conceptual or abstract elements",
+            "Include innovative breakthrough terms",
+            "Push the boundaries of imagination!"
+        ],
+        "required_keywords": ["creative", "innovative", "unique"],
+        "bonus_keywords": ["surreal", "imaginative", "artistic", "conceptual", "abstract", "experimental"],
+        "secret_keywords": ["breakthrough", "revolutionary", "groundbreaking"],
+        "negative_prompts": ["ordinary", "boring", "typical"],
+        "min_xp_to_pass": 350, "base_xp": 150, "bonus_xp": 45, "secret_xp": 100,
+        "max_words": 20, "difficulty_stars": 6,
+        "techniques": ["Creative formulas", "Pattern innovation", "Conceptual thinking"],
+        "example_prompt": "Surreal conceptual art: clock made of flowing water, innovative groundbreaking artistic vision",
+        "tutorial": "Use creative formulas: '[Object] made of [Material]', '[Emotion] as [Physical form]', '[Abstract] in [Real setting]'"
+    },
+    7: {
+        "title": "Professional Workflows", "icon": "💼", "theme_color": "#2C3E50",
+        "description": "Mood boards, iteration, and brand consistency",
+        "learning_focus": "Professional application and workflow management",
+        "what_to_do": "Think like a professional designer! Learn to create consistent brand imagery, mood boards, and systematic workflows for commercial projects.",
+        "how_to_do": "Plan your visual story. Create series of consistent images. Use systematic approach. Think about brand identity and commercial applications.",
+        "step_by_step": [
+            "Define your brand or project concept",
+            "Create consistent visual themes",
+            "Use systematic workflow approaches",
+            "Include professional industry terms",
+            "Build commercial-grade image series!"
+        ],
+        "required_keywords": ["professional", "consistent", "workflow"],
+        "bonus_keywords": ["mood board", "brand", "coherent", "systematic", "strategic", "planned"],
+        "secret_keywords": ["industry standard", "commercial grade", "enterprise"],
+        "negative_prompts": ["inconsistent", "random", "unplanned"],
+        "min_xp_to_pass": 400, "base_xp": 170, "bonus_xp": 50, "secret_xp": 110,
+        "max_words": 25, "difficulty_stars": 7,
+        "techniques": ["Mood board creation", "Brand consistency", "Workflow optimization"],
+        "example_prompt": "Professional brand-consistent mood board series, systematic workflow, industry standard commercial quality",
+        "tutorial": "Think like a pro: maintain consistency across images, plan your visual story, create series not singles"
+    },
+    8: {
+        "title": "Master Certification", "icon": "👑", "theme_color": "#C0392B",
+        "description": "Portfolio creation and advanced challenges",
+        "learning_focus": "Mastery demonstration and portfolio development",
+        "what_to_do": "Achieve mastery! Create your signature style, build an impressive portfolio, and demonstrate expert-level prompt engineering skills across all domains.",
+        "how_to_do": "Combine all techniques learned. Develop your unique artistic voice. Create portfolio-worthy pieces. Show virtuoso-level skills and innovation.",
+        "step_by_step": [
+            "Combine techniques from all previous levels",
+            "Develop your unique signature style",
+            "Create portfolio-quality masterpieces",
+            "Include legendary and iconic terms",
+            "Achieve prompt engineering mastery!"
+        ],
+        "required_keywords": ["master", "expert", "portfolio"],
+        "bonus_keywords": ["signature", "acclaimed", "renowned", "virtuoso", "exemplary", "extraordinary"],
+        "secret_keywords": ["legendary", "iconic", "timeless"],
+        "negative_prompts": ["novice", "basic", "beginner"],
+        "min_xp_to_pass": 500, "base_xp": 200, "bonus_xp": 60, "secret_xp": 150,
+        "max_words": 30, "difficulty_stars": 8,
+        "techniques": ["Portfolio curation", "Style signature", "Mastery demonstration"],
+        "example_prompt": "Legendary master portfolio piece: iconic timeless artwork showcasing virtuoso technique and extraordinary vision",
+        "tutorial": "Create your signature style. Combine all techniques you've learned. Show your unique artistic voice."
     }
-    # ... (continue with levels 5-8)
 }
 
 # ===== ACHIEVEMENTS SYSTEM =====
@@ -168,9 +258,9 @@ def initialize_comprehensive_session_state():
 
 initialize_comprehensive_session_state()
 
-# ===== GAMING-FOCUSED CSS =====
+# ===== FIXED GAMING CSS WITH BETTER CONTRAST =====
 def apply_gaming_ui_css():
-    """Apply gaming-focused CSS with seamless backgrounds and clear typography"""
+    """Apply gaming-focused CSS with excellent text visibility"""
     st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
@@ -182,9 +272,9 @@ def apply_gaming_ui_css():
         --neon-green: #39ff14;
         --neon-yellow: #ffff00;
         --dark-bg: #0a0a0a;
-        --card-bg: rgba(20, 20, 40, 0.95);
+        --card-bg: rgba(10, 10, 10, 0.95);
         --text-primary: #ffffff;
-        --text-secondary: #cccccc;
+        --text-secondary: #e0e0e0;
         --text-accent: #00ffff;
     }
     
@@ -221,7 +311,7 @@ def apply_gaming_ui_css():
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 1;
     }
     
@@ -237,7 +327,11 @@ def apply_gaming_ui_css():
         font-size: 4.5rem;
         font-weight: 900;
         color: #ffffff;
-        text-shadow: 0 0 20px #00ffff, 0 0 40px #ff0080;
+        text-shadow: 
+            0 0 5px #000000,
+            0 0 10px #000000,
+            0 0 20px #00ffff, 
+            0 0 40px #ff0080;
         margin: 0;
         letter-spacing: 3px;
         animation: titleGlow 2s ease-in-out infinite alternate;
@@ -245,11 +339,19 @@ def apply_gaming_ui_css():
     
     @keyframes titleGlow {
         from { 
-            text-shadow: 0 0 20px #00ffff, 0 0 40px #ff0080;
+            text-shadow: 
+                0 0 5px #000000,
+                0 0 10px #000000,
+                0 0 20px #00ffff, 
+                0 0 40px #ff0080;
             transform: scale(1);
         }
         to { 
-            text-shadow: 0 0 30px #39ff14, 0 0 60px #ffff00;
+            text-shadow: 
+                0 0 5px #000000,
+                0 0 10px #000000,
+                0 0 30px #39ff14, 
+                0 0 60px #ffff00;
             transform: scale(1.02);
         }
     }
@@ -266,11 +368,11 @@ def apply_gaming_ui_css():
         display: flex;
         justify-content: center;
         gap: 0;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.95);
         padding: 0;
         margin: 2rem 0;
-        border-top: 2px solid #00ffff;
-        border-bottom: 2px solid #ff0080;
+        border-top: 3px solid #00ffff;
+        border-bottom: 3px solid #ff0080;
         position: relative;
     }
     
@@ -288,13 +390,13 @@ def apply_gaming_ui_css():
     }
     
     .stat-hud-item {
-        background: rgba(20, 20, 40, 0.95);
+        background: rgba(0, 0, 0, 0.95);
         padding: 1.5rem 2rem;
         text-align: center;
         min-width: 140px;
         position: relative;
-        border-left: 1px solid rgba(0, 255, 255, 0.3);
-        border-right: 1px solid rgba(255, 0, 128, 0.3);
+        border-left: 2px solid rgba(0, 255, 255, 0.5);
+        border-right: 2px solid rgba(255, 0, 128, 0.5);
         transition: all 0.3s ease;
     }
     
@@ -315,15 +417,20 @@ def apply_gaming_ui_css():
         font-size: 1.8rem;
         font-weight: 700;
         color: var(--neon-blue);
-        text-shadow: 0 0 10px currentColor;
+        text-shadow: 
+            0 0 3px #000000,
+            0 0 6px #000000,
+            0 0 10px currentColor;
         margin: 0.3rem 0;
     }
     
     .stat-label {
         font-size: 0.9rem;
-        color: var(--text-secondary);
+        color: #ffffff;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-weight: 600;
+        text-shadow: 0 0 3px #000000;
     }
     
     /* Gaming level cards - no rounded corners */
@@ -335,8 +442,8 @@ def apply_gaming_ui_css():
     }
     
     .gaming-level-card {
-        background: var(--card-bg);
-        border: 2px solid transparent;
+        background: rgba(0, 0, 0, 0.95);
+        border: 3px solid transparent;
         border-image: linear-gradient(45deg, #00ffff, #ff0080) 1;
         padding: 0;
         position: relative;
@@ -366,20 +473,20 @@ def apply_gaming_ui_css():
     
     .gaming-level-card.completed {
         border-image: linear-gradient(45deg, #39ff14, #00ff00) 1;
-        background: rgba(20, 40, 20, 0.95);
+        background: rgba(0, 40, 0, 0.95);
     }
     
     .gaming-level-card.locked {
         border-image: linear-gradient(45deg, #666666, #333333) 1;
-        background: rgba(40, 40, 40, 0.5);
+        background: rgba(40, 40, 40, 0.95);
         opacity: 0.6;
     }
     
     .level-card-header {
-        background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2));
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 40, 0.9));
         padding: 2rem;
         text-align: center;
-        border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        border-bottom: 2px solid rgba(0, 255, 255, 0.5);
     }
     
     .level-icon-large {
@@ -392,8 +499,11 @@ def apply_gaming_ui_css():
         font-family: 'Orbitron', monospace;
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--neon-blue);
-        text-shadow: 0 0 10px currentColor;
+        color: #ffffff;
+        text-shadow: 
+            0 0 3px #000000,
+            0 0 6px #000000,
+            0 0 10px var(--neon-blue);
         margin: 0;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -401,13 +511,16 @@ def apply_gaming_ui_css():
     
     .level-card-body {
         padding: 2rem;
+        background: rgba(0, 0, 0, 0.8);
     }
     
     .level-description {
-        color: var(--text-secondary);
+        color: #ffffff;
         font-size: 1rem;
         line-height: 1.6;
         margin-bottom: 1.5rem;
+        text-shadow: 0 0 3px #000000;
+        font-weight: 500;
     }
     
     .level-stats {
@@ -418,10 +531,12 @@ def apply_gaming_ui_css():
     }
     
     .level-stat {
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.9);
         padding: 0.5rem 1rem;
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        color: var(--neon-yellow);
+        border: 2px solid rgba(0, 255, 255, 0.5);
+        color: #ffffff;
+        font-weight: 600;
+        text-shadow: 0 0 3px #000000;
     }
     
     /* Enhanced buttons - gaming style */
@@ -438,12 +553,14 @@ def apply_gaming_ui_css():
         transition: all 0.3s ease !important;
         position: relative !important;
         overflow: hidden !important;
+        text-shadow: 0 0 3px #ffffff !important;
     }
     
     .stButton > button:hover {
         background: linear-gradient(45deg, #39ff14, #ffff00) !important;
         transform: scale(1.05) !important;
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+        color: #000000 !important;
     }
     
     .stButton > button::before {
@@ -461,16 +578,16 @@ def apply_gaming_ui_css():
     
     /* XP Progress bar - gaming style */
     .gaming-xp-container {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.95);
         padding: 1.5rem;
         margin: 2rem 0;
-        border: 1px solid rgba(0, 255, 255, 0.5);
+        border: 2px solid rgba(0, 255, 255, 0.5);
         position: relative;
     }
     
     .gaming-xp-bar {
         background: linear-gradient(90deg, #00ffff, #39ff14, #ffff00);
-        height: 20px;
+        height: 25px;
         position: relative;
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         transition: width 2s ease;
@@ -489,10 +606,10 @@ def apply_gaming_ui_css():
         100% { transform: translateX(100%); }
     }
     
-    /* Detailed level explanation box */
+    /* FIXED: Detailed level explanation box with HIGH CONTRAST */
     .level-explanation-box {
-        background: rgba(20, 20, 40, 0.95);
-        border: 2px solid var(--neon-blue);
+        background: rgba(0, 0, 0, 0.95);
+        border: 3px solid var(--neon-blue);
         padding: 2rem;
         margin: 2rem 0;
         position: relative;
@@ -503,55 +620,83 @@ def apply_gaming_ui_css():
         position: absolute;
         top: -15px;
         left: 20px;
-        background: var(--dark-bg);
+        background: #000000;
         padding: 0 1rem;
         font-size: 1.5rem;
     }
     
     .explanation-section {
-        margin: 1.5rem 0;
+        margin: 2rem 0;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1.5rem;
+        border-left: 4px solid var(--neon-yellow);
     }
     
     .explanation-title {
         font-family: 'Orbitron', monospace;
-        color: var(--neon-yellow);
-        font-size: 1.2rem;
+        color: #ffffff;
+        font-size: 1.3rem;
         font-weight: 700;
         margin-bottom: 1rem;
         text-transform: uppercase;
+        text-shadow: 
+            0 0 3px #000000,
+            0 0 6px #000000,
+            0 0 10px var(--neon-yellow);
+    }
+    
+    .explanation-text {
+        color: #ffffff;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        font-weight: 500;
+        text-shadow: 0 0 3px #000000;
+        margin-bottom: 1rem;
     }
     
     .step-list {
         list-style: none;
         padding: 0;
+        margin: 1rem 0;
     }
     
     .step-item {
-        background: rgba(0, 255, 255, 0.1);
-        margin: 0.5rem 0;
-        padding: 1rem;
-        border-left: 4px solid var(--neon-blue);
-        color: var(--text-primary);
+        background: rgba(0, 0, 0, 0.9);
+        margin: 1rem 0;
+        padding: 1.5rem;
+        border: 2px solid var(--neon-blue);
+        border-left: 6px solid var(--neon-green);
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-shadow: 0 0 3px #000000;
+        line-height: 1.6;
     }
     
     .step-number {
         color: var(--neon-yellow);
-        font-weight: 700;
+        font-weight: 900;
         font-family: 'Orbitron', monospace;
+        font-size: 1.2rem;
+        text-shadow: 
+            0 0 3px #000000,
+            0 0 6px #000000,
+            0 0 10px currentColor;
     }
     
     /* Achievement notifications */
     .gaming-achievement-popup {
         position: fixed;
         top: 20px; right: 20px;
-        background: rgba(0, 0, 0, 0.9);
-        border: 2px solid #39ff14;
+        background: rgba(0, 0, 0, 0.95);
+        border: 3px solid #39ff14;
         color: #ffffff;
         padding: 2rem;
         z-index: 9999;
         animation: achievementSlide 0.5s ease-out;
         box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
         max-width: 350px;
+        text-shadow: 0 0 3px #000000;
     }
     
     @keyframes achievementSlide {
@@ -571,6 +716,8 @@ def apply_gaming_ui_css():
         .gaming-stats-hud { flex-wrap: wrap; }
         .stat-hud-item { min-width: auto; flex: 1; }
         .gaming-level-grid { grid-template-columns: 1fr; }
+        .explanation-title { font-size: 1.1rem; }
+        .step-item { padding: 1rem; font-size: 1rem; }
     }
     
     </style>
@@ -587,10 +734,10 @@ def create_gaming_header():
     <div class="gaming-hud-header">
         <div class="header-content">
             <h1 class="gaming-title">AI PROMPT MASTER</h1>
-            <div style="font-family: 'Orbitron', monospace; font-size: 1.5rem; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-top: 1rem;">
+            <div style="font-family: 'Orbitron', monospace; font-size: 1.5rem; color: #ffffff; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 10px #00ffff; margin-top: 1rem; font-weight: 700;">
                 LEVEL {st.session_state.current_level} • {current_rank} • {st.session_state.total_xp:,} XP
             </div>
-            <div style="font-size: 1.2rem; color: #cccccc; margin-top: 0.5rem;">
+            <div style="font-size: 1.2rem; color: #ffffff; margin-top: 0.5rem; text-shadow: 0 0 3px #000000; font-weight: 600;">
                 {'🤖 AI READY' if st.session_state.model_loaded else '🎨 PREVIEW MODE'} • 
                 STREAK: {st.session_state.daily_streak} DAYS
             </div>
@@ -633,10 +780,10 @@ def create_gaming_stats_hud():
     
     st.markdown(f"""
     <div class="gaming-xp-container">
-        <div style="font-family: 'Orbitron', monospace; color: #00ffff; font-weight: 700; margin-bottom: 1rem; text-align: center;">
+        <div style="font-family: 'Orbitron', monospace; color: #ffffff; font-weight: 700; margin-bottom: 1rem; text-align: center; font-size: 1.2rem; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 10px #00ffff;">
             RANK PROGRESS: {current_xp:,} / {next_rank_xp:,} XP ({int(progress * 100)}%)
         </div>
-        <div style="background: rgba(0,0,0,0.5); height: 20px; position: relative;">
+        <div style="background: rgba(0,0,0,0.8); height: 25px; position: relative; border: 2px solid #00ffff;">
             <div class="gaming-xp-bar" style="width: {progress * 100}%;"></div>
         </div>
     </div>
@@ -651,15 +798,15 @@ def create_gaming_level_grid():
     progress_percentage = (completed / len(LEVELS)) * 100
     
     st.markdown(f"""
-    <div style="text-align: center; margin: 2rem 0; background: rgba(0,0,0,0.8); padding: 2rem; border: 1px solid #00ffff;">
-        <h3 style="color: #00ffff; margin-bottom: 1rem; font-family: 'Orbitron', monospace;">🌟 MASTERY PROGRESS</h3>
-        <div style="font-size: 4rem; font-weight: 900; color: #39ff14; margin: 1rem 0; font-family: 'Orbitron', monospace;">{completed}/{len(LEVELS)}</div>
+    <div style="text-align: center; margin: 2rem 0; background: rgba(0,0,0,0.95); padding: 2rem; border: 3px solid #00ffff;">
+        <h3 style="color: #ffffff; margin-bottom: 1rem; font-family: 'Orbitron', monospace; font-size: 1.8rem; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 10px #00ffff;">🌟 MASTERY PROGRESS</h3>
+        <div style="font-size: 4rem; font-weight: 900; color: #39ff14; margin: 1rem 0; font-family: 'Orbitron', monospace; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 15px #39ff14;">{completed}/{len(LEVELS)}</div>
         <div style="margin: 1rem 0;">
-            <div style="background: rgba(0,0,0,0.7); height: 20px; overflow: hidden; position: relative;">
+            <div style="background: rgba(0,0,0,0.9); height: 25px; overflow: hidden; position: relative; border: 2px solid #39ff14;">
                 <div style="background: linear-gradient(90deg, #00ffff, #39ff14); height: 100%; width: {progress_percentage}%; transition: width 1s ease;"></div>
             </div>
         </div>
-        <p style="color: #cccccc; font-size: 1.2rem;">COMPLETION: {progress_percentage:.0f}%</p>
+        <p style="color: #ffffff; font-size: 1.2rem; font-weight: 600; text-shadow: 0 0 3px #000000;">COMPLETION: {progress_percentage:.0f}%</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -688,7 +835,7 @@ def create_gaming_level_grid():
             <div class="level-card-header">
                 <div class="level-icon-large">{level_data['icon']}</div>
                 <h3 class="level-title">LEVEL {level_id}: {level_data['title']}</h3>
-                <div style="color: {status_color}; font-weight: 700; margin-top: 1rem;">{status_text}</div>
+                <div style="color: {status_color}; font-weight: 700; margin-top: 1rem; font-size: 1.1rem; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 10px {status_color};">{status_text}</div>
             </div>
             <div class="level-card-body">
                 <p class="level-description">{level_data['description']}</p>
@@ -720,17 +867,17 @@ def create_gaming_level_grid():
                 st.button(f"🔒 LEVEL {level_id}", key=f"locked_{level_id}", disabled=True, use_container_width=True)
 
 def create_detailed_level_explanation(level_info):
-    """Create detailed learning explanation for each level"""
+    """Create detailed learning explanation for each level with HIGH CONTRAST"""
     st.markdown(f"""
     <div class="level-explanation-box">
         <div class="explanation-section">
             <div class="explanation-title">🎯 WHAT YOU'LL DO</div>
-            <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.6;">{level_info['what_to_do']}</p>
+            <div class="explanation-text">{level_info['what_to_do']}</div>
         </div>
         
         <div class="explanation-section">
             <div class="explanation-title">📋 HOW TO DO IT</div>
-            <p style="color: #cccccc; line-height: 1.6;">{level_info['how_to_do']}</p>
+            <div class="explanation-text">{level_info['how_to_do']}</div>
         </div>
         
         <div class="explanation-section">
@@ -751,7 +898,7 @@ def create_detailed_level_explanation(level_info):
     </div>
     """, unsafe_allow_html=True)
 
-# Helper functions (add these)
+# Helper functions
 def calculate_user_rank():
     """Calculate user rank based on XP and achievements"""
     xp = st.session_state.total_xp
@@ -802,25 +949,25 @@ def get_current_rank_base_xp(next_rank_xp):
         return 1500
 
 def play_enhanced_level(level_id):
-    """Enhanced level play with detailed explanations"""
+    """Enhanced level play with detailed explanations and HIGH CONTRAST"""
     level_info = LEVELS[level_id]
     
-    # Level header
+    # Level header with better contrast
     st.markdown(f"""
-    <div style="background: linear-gradient(45deg, {level_info['theme_color']}, rgba(0,0,0,0.8)); 
-                padding: 3rem; margin: 2rem 0; border: 2px solid {level_info['theme_color']};">
+    <div style="background: linear-gradient(45deg, rgba(0,0,0,0.9), {level_info['theme_color']}); 
+                padding: 3rem; margin: 2rem 0; border: 3px solid {level_info['theme_color']};">
         <div style="display: flex; align-items: center; gap: 2rem;">
-            <div style="font-size: 6rem;">{level_info['icon']}</div>
+            <div style="font-size: 6rem; filter: drop-shadow(0 0 15px {level_info['theme_color']});">{level_info['icon']}</div>
             <div>
-                <h1 style="color: #ffffff; font-family: 'Orbitron', monospace; font-size: 3rem; margin: 0; text-shadow: 0 0 20px {level_info['theme_color']};">
+                <h1 style="color: #ffffff; font-family: 'Orbitron', monospace; font-size: 3rem; margin: 0; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 20px {level_info['theme_color']}; font-weight: 900;">
                     LEVEL {level_id}: {level_info['title'].upper()}
                 </h1>
-                <p style="color: #cccccc; font-size: 1.4rem; margin: 1rem 0;">{level_info['description']}</p>
+                <p style="color: #ffffff; font-size: 1.4rem; margin: 1rem 0; text-shadow: 0 0 3px #000000; font-weight: 600;">{level_info['description']}</p>
                 <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                    <span style="background: rgba(0,0,0,0.7); padding: 0.8rem 1.5rem; color: #ffff00; font-weight: 700;">
+                    <span style="background: rgba(0,0,0,0.9); padding: 0.8rem 1.5rem; color: #ffff00; font-weight: 700; border: 2px solid #ffff00; text-shadow: 0 0 3px #000000;">
                         DIFFICULTY: {'⭐' * level_info['difficulty_stars']}
                     </span>
-                    <span style="background: rgba(0,0,0,0.7); padding: 0.8rem 1.5rem; color: #00ffff; font-weight: 700;">
+                    <span style="background: rgba(0,0,0,0.9); padding: 0.8rem 1.5rem; color: #00ffff; font-weight: 700; border: 2px solid #00ffff; text-shadow: 0 0 3px #000000;">
                         TARGET: {level_info['min_xp_to_pass']} XP
                     </span>
                 </div>
@@ -829,10 +976,10 @@ def play_enhanced_level(level_id):
     </div>
     """, unsafe_allow_html=True)
     
-    # Detailed explanation
+    # Detailed explanation with high contrast
     create_detailed_level_explanation(level_info)
     
-    # Interactive prompt area would go here...
+    # Interactive prompt area
     st.markdown("### 🎮 **TRAINING GROUND**")
     
     # Add your existing prompt input and generation logic here
@@ -866,7 +1013,7 @@ def main():
     # Gaming stats HUD
     create_gaming_stats_hud()
     
-    # Daily login bonus (existing logic)
+    # Daily login bonus
     today = datetime.now().date()
     if st.session_state.last_play_date != today:
         st.session_state.last_play_date = today
@@ -890,17 +1037,17 @@ def main():
         # Welcome message for new users
         if st.session_state.total_xp == 0:
             st.markdown(f"""
-            <div style="background: rgba(0,0,0,0.9); padding: 3rem; margin: 2rem 0; border: 2px solid #00ffff; text-align: center;">
-                <h2 style="color: #39ff14; font-family: 'Orbitron', monospace; font-size: 2.5rem; margin-bottom: 2rem;">
+            <div style="background: rgba(0,0,0,0.95); padding: 3rem; margin: 2rem 0; border: 3px solid #00ffff; text-align: center;">
+                <h2 style="color: #39ff14; font-family: 'Orbitron', monospace; font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 15px #39ff14;">
                     🌟 WELCOME TO THE ULTIMATE AI TRAINING ARENA! 🌟
                 </h2>
-                <div style="color: #ffffff; font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                    <p><strong>🎮 REAL AI TRAINING:</strong> Master actual Stable Diffusion technology!</p>
-                    <p><strong>🏆 EPIC PROGRESSION:</strong> 8 challenging levels from rookie to grandmaster!</p>
-                    <p><strong>🔥 MASSIVE REWARDS:</strong> XP, achievements, combos, and daily challenges!</p>
-                    <p><strong>🎯 PROFESSIONAL SKILLS:</strong> Learn industry-standard prompt engineering!</p>
+                <div style="color: #ffffff; font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto; text-shadow: 0 0 3px #000000;">
+                    <p style="margin: 1rem 0;"><strong style="color: #00ffff;">🎮 REAL AI TRAINING:</strong> Master actual Stable Diffusion technology!</p>
+                    <p style="margin: 1rem 0;"><strong style="color: #ff0080;">🏆 EPIC PROGRESSION:</strong> 8 challenging levels from rookie to grandmaster!</p>
+                    <p style="margin: 1rem 0;"><strong style="color: #39ff14;">🔥 MASSIVE REWARDS:</strong> XP, achievements, combos, and daily challenges!</p>
+                    <p style="margin: 1rem 0;"><strong style="color: #ffff00;">🎯 PROFESSIONAL SKILLS:</strong> Learn industry-standard prompt engineering!</p>
                     <br>
-                    <div style="color: #ffff00; font-size: 1.3rem; font-weight: 700;">
+                    <div style="color: #ffff00; font-size: 1.5rem; font-weight: 900; text-shadow: 0 0 3px #000000, 0 0 6px #000000, 0 0 15px #ffff00; margin-top: 2rem;">
                         🚀 START YOUR JOURNEY WITH LEVEL 1: WORD DISCOVERY! 🚀
                     </div>
                 </div>
@@ -909,9 +1056,6 @@ def main():
         
         # Level selection grid
         create_gaming_level_grid()
-        
-        # Portfolio and achievements (existing logic)
-        # ... (keep your existing portfolio and achievement display code)
     
     else:
         # Play selected level
